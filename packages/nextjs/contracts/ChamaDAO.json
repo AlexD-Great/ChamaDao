@@ -1,0 +1,1394 @@
+﻿{
+    "address":  "0xCD41309879BfB57c1b2b19D58b47B190C7387c54",
+    "abi":  [
+                {
+                    "anonymous":  false,
+                    "inputs":  [
+                                   {
+                                       "indexed":  true,
+                                       "internalType":  "uint256",
+                                       "name":  "chamaId",
+                                       "type":  "uint256"
+                                   },
+                                   {
+                                       "indexed":  false,
+                                       "internalType":  "string",
+                                       "name":  "name",
+                                       "type":  "string"
+                                   },
+                                   {
+                                       "indexed":  true,
+                                       "internalType":  "address",
+                                       "name":  "creator",
+                                       "type":  "address"
+                                   },
+                                   {
+                                       "indexed":  false,
+                                       "internalType":  "uint256",
+                                       "name":  "contributionAmount",
+                                       "type":  "uint256"
+                                   },
+                                   {
+                                       "indexed":  false,
+                                       "internalType":  "uint256",
+                                       "name":  "contributionFrequency",
+                                       "type":  "uint256"
+                                   }
+                               ],
+                    "name":  "ChamaCreated",
+                    "type":  "event"
+                },
+                {
+                    "anonymous":  false,
+                    "inputs":  [
+                                   {
+                                       "indexed":  true,
+                                       "internalType":  "uint256",
+                                       "name":  "chamaId",
+                                       "type":  "uint256"
+                                   },
+                                   {
+                                       "indexed":  true,
+                                       "internalType":  "address",
+                                       "name":  "member",
+                                       "type":  "address"
+                                   },
+                                   {
+                                       "indexed":  false,
+                                       "internalType":  "uint256",
+                                       "name":  "amount",
+                                       "type":  "uint256"
+                                   },
+                                   {
+                                       "indexed":  false,
+                                       "internalType":  "uint256",
+                                       "name":  "timestamp",
+                                       "type":  "uint256"
+                                   }
+                               ],
+                    "name":  "ContributionMade",
+                    "type":  "event"
+                },
+                {
+                    "anonymous":  false,
+                    "inputs":  [
+                                   {
+                                       "indexed":  true,
+                                       "internalType":  "uint256",
+                                       "name":  "chamaId",
+                                       "type":  "uint256"
+                                   },
+                                   {
+                                       "indexed":  true,
+                                       "internalType":  "address",
+                                       "name":  "recipient",
+                                       "type":  "address"
+                                   },
+                                   {
+                                       "indexed":  false,
+                                       "internalType":  "uint256",
+                                       "name":  "amount",
+                                       "type":  "uint256"
+                                   }
+                               ],
+                    "name":  "FundsWithdrawn",
+                    "type":  "event"
+                },
+                {
+                    "anonymous":  false,
+                    "inputs":  [
+                                   {
+                                       "indexed":  true,
+                                       "internalType":  "uint256",
+                                       "name":  "loanId",
+                                       "type":  "uint256"
+                                   },
+                                   {
+                                       "indexed":  true,
+                                       "internalType":  "uint256",
+                                       "name":  "chamaId",
+                                       "type":  "uint256"
+                                   },
+                                   {
+                                       "indexed":  true,
+                                       "internalType":  "address",
+                                       "name":  "borrower",
+                                       "type":  "address"
+                                   },
+                                   {
+                                       "indexed":  false,
+                                       "internalType":  "uint256",
+                                       "name":  "amount",
+                                       "type":  "uint256"
+                                   }
+                               ],
+                    "name":  "LoanApproved",
+                    "type":  "event"
+                },
+                {
+                    "anonymous":  false,
+                    "inputs":  [
+                                   {
+                                       "indexed":  true,
+                                       "internalType":  "uint256",
+                                       "name":  "loanId",
+                                       "type":  "uint256"
+                                   },
+                                   {
+                                       "indexed":  true,
+                                       "internalType":  "uint256",
+                                       "name":  "chamaId",
+                                       "type":  "uint256"
+                                   }
+                               ],
+                    "name":  "LoanRejected",
+                    "type":  "event"
+                },
+                {
+                    "anonymous":  false,
+                    "inputs":  [
+                                   {
+                                       "indexed":  true,
+                                       "internalType":  "uint256",
+                                       "name":  "loanId",
+                                       "type":  "uint256"
+                                   },
+                                   {
+                                       "indexed":  true,
+                                       "internalType":  "uint256",
+                                       "name":  "chamaId",
+                                       "type":  "uint256"
+                                   },
+                                   {
+                                       "indexed":  true,
+                                       "internalType":  "address",
+                                       "name":  "borrower",
+                                       "type":  "address"
+                                   },
+                                   {
+                                       "indexed":  false,
+                                       "internalType":  "uint256",
+                                       "name":  "amount",
+                                       "type":  "uint256"
+                                   },
+                                   {
+                                       "indexed":  false,
+                                       "internalType":  "string",
+                                       "name":  "purpose",
+                                       "type":  "string"
+                                   }
+                               ],
+                    "name":  "LoanRequested",
+                    "type":  "event"
+                },
+                {
+                    "anonymous":  false,
+                    "inputs":  [
+                                   {
+                                       "indexed":  true,
+                                       "internalType":  "uint256",
+                                       "name":  "chamaId",
+                                       "type":  "uint256"
+                                   },
+                                   {
+                                       "indexed":  true,
+                                       "internalType":  "address",
+                                       "name":  "member",
+                                       "type":  "address"
+                                   },
+                                   {
+                                       "indexed":  false,
+                                       "internalType":  "uint256",
+                                       "name":  "timestamp",
+                                       "type":  "uint256"
+                                   }
+                               ],
+                    "name":  "MemberJoined",
+                    "type":  "event"
+                },
+                {
+                    "anonymous":  false,
+                    "inputs":  [
+                                   {
+                                       "indexed":  true,
+                                       "internalType":  "uint256",
+                                       "name":  "loanId",
+                                       "type":  "uint256"
+                                   },
+                                   {
+                                       "indexed":  true,
+                                       "internalType":  "address",
+                                       "name":  "voter",
+                                       "type":  "address"
+                                   },
+                                   {
+                                       "indexed":  false,
+                                       "internalType":  "bool",
+                                       "name":  "support",
+                                       "type":  "bool"
+                                   }
+                               ],
+                    "name":  "VoteCast",
+                    "type":  "event"
+                },
+                {
+                    "inputs":  [
+
+                               ],
+                    "name":  "chamaCount",
+                    "outputs":  [
+                                    {
+                                        "internalType":  "uint256",
+                                        "name":  "",
+                                        "type":  "uint256"
+                                    }
+                                ],
+                    "stateMutability":  "view",
+                    "type":  "function"
+                },
+                {
+                    "inputs":  [
+                                   {
+                                       "internalType":  "uint256",
+                                       "name":  "",
+                                       "type":  "uint256"
+                                   },
+                                   {
+                                       "internalType":  "uint256",
+                                       "name":  "",
+                                       "type":  "uint256"
+                                   }
+                               ],
+                    "name":  "chamaMemberList",
+                    "outputs":  [
+                                    {
+                                        "internalType":  "address",
+                                        "name":  "",
+                                        "type":  "address"
+                                    }
+                                ],
+                    "stateMutability":  "view",
+                    "type":  "function"
+                },
+                {
+                    "inputs":  [
+                                   {
+                                       "internalType":  "uint256",
+                                       "name":  "",
+                                       "type":  "uint256"
+                                   },
+                                   {
+                                       "internalType":  "address",
+                                       "name":  "",
+                                       "type":  "address"
+                                   }
+                               ],
+                    "name":  "chamaMembers",
+                    "outputs":  [
+                                    {
+                                        "internalType":  "address",
+                                        "name":  "memberAddress",
+                                        "type":  "address"
+                                    },
+                                    {
+                                        "internalType":  "uint256",
+                                        "name":  "totalContributed",
+                                        "type":  "uint256"
+                                    },
+                                    {
+                                        "internalType":  "uint256",
+                                        "name":  "lastContributionTime",
+                                        "type":  "uint256"
+                                    },
+                                    {
+                                        "internalType":  "uint256",
+                                        "name":  "joinedAt",
+                                        "type":  "uint256"
+                                    },
+                                    {
+                                        "internalType":  "bool",
+                                        "name":  "isActive",
+                                        "type":  "bool"
+                                    }
+                                ],
+                    "stateMutability":  "view",
+                    "type":  "function"
+                },
+                {
+                    "inputs":  [
+                                   {
+                                       "internalType":  "uint256",
+                                       "name":  "",
+                                       "type":  "uint256"
+                                   }
+                               ],
+                    "name":  "chamas",
+                    "outputs":  [
+                                    {
+                                        "internalType":  "string",
+                                        "name":  "name",
+                                        "type":  "string"
+                                    },
+                                    {
+                                        "internalType":  "string",
+                                        "name":  "description",
+                                        "type":  "string"
+                                    },
+                                    {
+                                        "internalType":  "address",
+                                        "name":  "creator",
+                                        "type":  "address"
+                                    },
+                                    {
+                                        "internalType":  "uint256",
+                                        "name":  "contributionAmount",
+                                        "type":  "uint256"
+                                    },
+                                    {
+                                        "internalType":  "uint256",
+                                        "name":  "contributionFrequency",
+                                        "type":  "uint256"
+                                    },
+                                    {
+                                        "internalType":  "uint256",
+                                        "name":  "createdAt",
+                                        "type":  "uint256"
+                                    },
+                                    {
+                                        "internalType":  "uint256",
+                                        "name":  "totalContributions",
+                                        "type":  "uint256"
+                                    },
+                                    {
+                                        "internalType":  "uint256",
+                                        "name":  "memberCount",
+                                        "type":  "uint256"
+                                    },
+                                    {
+                                        "internalType":  "bool",
+                                        "name":  "isActive",
+                                        "type":  "bool"
+                                    }
+                                ],
+                    "stateMutability":  "view",
+                    "type":  "function"
+                },
+                {
+                    "inputs":  [
+                                   {
+                                       "internalType":  "uint256",
+                                       "name":  "_chamaId",
+                                       "type":  "uint256"
+                                   }
+                               ],
+                    "name":  "contribute",
+                    "outputs":  [
+
+                                ],
+                    "stateMutability":  "payable",
+                    "type":  "function"
+                },
+                {
+                    "inputs":  [
+                                   {
+                                       "internalType":  "string",
+                                       "name":  "_name",
+                                       "type":  "string"
+                                   },
+                                   {
+                                       "internalType":  "string",
+                                       "name":  "_description",
+                                       "type":  "string"
+                                   },
+                                   {
+                                       "internalType":  "uint256",
+                                       "name":  "_contributionAmount",
+                                       "type":  "uint256"
+                                   },
+                                   {
+                                       "internalType":  "uint256",
+                                       "name":  "_contributionFrequency",
+                                       "type":  "uint256"
+                                   }
+                               ],
+                    "name":  "createChama",
+                    "outputs":  [
+                                    {
+                                        "internalType":  "uint256",
+                                        "name":  "",
+                                        "type":  "uint256"
+                                    }
+                                ],
+                    "stateMutability":  "nonpayable",
+                    "type":  "function"
+                },
+                {
+                    "inputs":  [
+                                   {
+                                       "internalType":  "uint256",
+                                       "name":  "_loanId",
+                                       "type":  "uint256"
+                                   }
+                               ],
+                    "name":  "executeLoan",
+                    "outputs":  [
+
+                                ],
+                    "stateMutability":  "nonpayable",
+                    "type":  "function"
+                },
+                {
+                    "inputs":  [
+                                   {
+                                       "internalType":  "uint256",
+                                       "name":  "_chamaId",
+                                       "type":  "uint256"
+                                   }
+                               ],
+                    "name":  "getChama",
+                    "outputs":  [
+                                    {
+                                        "internalType":  "string",
+                                        "name":  "name",
+                                        "type":  "string"
+                                    },
+                                    {
+                                        "internalType":  "string",
+                                        "name":  "description",
+                                        "type":  "string"
+                                    },
+                                    {
+                                        "internalType":  "address",
+                                        "name":  "creator",
+                                        "type":  "address"
+                                    },
+                                    {
+                                        "internalType":  "uint256",
+                                        "name":  "contributionAmount",
+                                        "type":  "uint256"
+                                    },
+                                    {
+                                        "internalType":  "uint256",
+                                        "name":  "contributionFrequency",
+                                        "type":  "uint256"
+                                    },
+                                    {
+                                        "internalType":  "uint256",
+                                        "name":  "totalContributions",
+                                        "type":  "uint256"
+                                    },
+                                    {
+                                        "internalType":  "uint256",
+                                        "name":  "memberCount",
+                                        "type":  "uint256"
+                                    },
+                                    {
+                                        "internalType":  "bool",
+                                        "name":  "isActive",
+                                        "type":  "bool"
+                                    }
+                                ],
+                    "stateMutability":  "view",
+                    "type":  "function"
+                },
+                {
+                    "inputs":  [
+                                   {
+                                       "internalType":  "uint256",
+                                       "name":  "_chamaId",
+                                       "type":  "uint256"
+                                   }
+                               ],
+                    "name":  "getChamaBalance",
+                    "outputs":  [
+                                    {
+                                        "internalType":  "uint256",
+                                        "name":  "",
+                                        "type":  "uint256"
+                                    }
+                                ],
+                    "stateMutability":  "view",
+                    "type":  "function"
+                },
+                {
+                    "inputs":  [
+                                   {
+                                       "internalType":  "uint256",
+                                       "name":  "_chamaId",
+                                       "type":  "uint256"
+                                   }
+                               ],
+                    "name":  "getChamaMembers",
+                    "outputs":  [
+                                    {
+                                        "internalType":  "address[]",
+                                        "name":  "",
+                                        "type":  "address[]"
+                                    }
+                                ],
+                    "stateMutability":  "view",
+                    "type":  "function"
+                },
+                {
+                    "inputs":  [
+
+                               ],
+                    "name":  "getContractBalance",
+                    "outputs":  [
+                                    {
+                                        "internalType":  "uint256",
+                                        "name":  "",
+                                        "type":  "uint256"
+                                    }
+                                ],
+                    "stateMutability":  "view",
+                    "type":  "function"
+                },
+                {
+                    "inputs":  [
+                                   {
+                                       "internalType":  "uint256",
+                                       "name":  "_loanId",
+                                       "type":  "uint256"
+                                   }
+                               ],
+                    "name":  "getLoanRequest",
+                    "outputs":  [
+                                    {
+                                        "internalType":  "uint256",
+                                        "name":  "chamaId",
+                                        "type":  "uint256"
+                                    },
+                                    {
+                                        "internalType":  "address",
+                                        "name":  "borrower",
+                                        "type":  "address"
+                                    },
+                                    {
+                                        "internalType":  "uint256",
+                                        "name":  "amount",
+                                        "type":  "uint256"
+                                    },
+                                    {
+                                        "internalType":  "string",
+                                        "name":  "purpose",
+                                        "type":  "string"
+                                    },
+                                    {
+                                        "internalType":  "uint256",
+                                        "name":  "repaymentPeriod",
+                                        "type":  "uint256"
+                                    },
+                                    {
+                                        "internalType":  "uint256",
+                                        "name":  "votesFor",
+                                        "type":  "uint256"
+                                    },
+                                    {
+                                        "internalType":  "uint256",
+                                        "name":  "votesAgainst",
+                                        "type":  "uint256"
+                                    },
+                                    {
+                                        "internalType":  "uint256",
+                                        "name":  "deadline",
+                                        "type":  "uint256"
+                                    },
+                                    {
+                                        "internalType":  "bool",
+                                        "name":  "executed",
+                                        "type":  "bool"
+                                    },
+                                    {
+                                        "internalType":  "bool",
+                                        "name":  "approved",
+                                        "type":  "bool"
+                                    }
+                                ],
+                    "stateMutability":  "view",
+                    "type":  "function"
+                },
+                {
+                    "inputs":  [
+                                   {
+                                       "internalType":  "uint256",
+                                       "name":  "_chamaId",
+                                       "type":  "uint256"
+                                   },
+                                   {
+                                       "internalType":  "address",
+                                       "name":  "_member",
+                                       "type":  "address"
+                                   }
+                               ],
+                    "name":  "getMember",
+                    "outputs":  [
+                                    {
+                                        "internalType":  "uint256",
+                                        "name":  "totalContributed",
+                                        "type":  "uint256"
+                                    },
+                                    {
+                                        "internalType":  "uint256",
+                                        "name":  "lastContributionTime",
+                                        "type":  "uint256"
+                                    },
+                                    {
+                                        "internalType":  "uint256",
+                                        "name":  "joinedAt",
+                                        "type":  "uint256"
+                                    },
+                                    {
+                                        "internalType":  "bool",
+                                        "name":  "isActive",
+                                        "type":  "bool"
+                                    }
+                                ],
+                    "stateMutability":  "view",
+                    "type":  "function"
+                },
+                {
+                    "inputs":  [
+                                   {
+                                       "internalType":  "address",
+                                       "name":  "_user",
+                                       "type":  "address"
+                                   }
+                               ],
+                    "name":  "getUserChamas",
+                    "outputs":  [
+                                    {
+                                        "internalType":  "uint256[]",
+                                        "name":  "",
+                                        "type":  "uint256[]"
+                                    }
+                                ],
+                    "stateMutability":  "view",
+                    "type":  "function"
+                },
+                {
+                    "inputs":  [
+                                   {
+                                       "internalType":  "uint256",
+                                       "name":  "",
+                                       "type":  "uint256"
+                                   },
+                                   {
+                                       "internalType":  "address",
+                                       "name":  "",
+                                       "type":  "address"
+                                   }
+                               ],
+                    "name":  "hasVoted",
+                    "outputs":  [
+                                    {
+                                        "internalType":  "bool",
+                                        "name":  "",
+                                        "type":  "bool"
+                                    }
+                                ],
+                    "stateMutability":  "view",
+                    "type":  "function"
+                },
+                {
+                    "inputs":  [
+                                   {
+                                       "internalType":  "uint256",
+                                       "name":  "_chamaId",
+                                       "type":  "uint256"
+                                   }
+                               ],
+                    "name":  "joinChama",
+                    "outputs":  [
+
+                                ],
+                    "stateMutability":  "nonpayable",
+                    "type":  "function"
+                },
+                {
+                    "inputs":  [
+
+                               ],
+                    "name":  "loanRequestCount",
+                    "outputs":  [
+                                    {
+                                        "internalType":  "uint256",
+                                        "name":  "",
+                                        "type":  "uint256"
+                                    }
+                                ],
+                    "stateMutability":  "view",
+                    "type":  "function"
+                },
+                {
+                    "inputs":  [
+                                   {
+                                       "internalType":  "uint256",
+                                       "name":  "",
+                                       "type":  "uint256"
+                                   }
+                               ],
+                    "name":  "loanRequests",
+                    "outputs":  [
+                                    {
+                                        "internalType":  "uint256",
+                                        "name":  "chamaId",
+                                        "type":  "uint256"
+                                    },
+                                    {
+                                        "internalType":  "address",
+                                        "name":  "borrower",
+                                        "type":  "address"
+                                    },
+                                    {
+                                        "internalType":  "uint256",
+                                        "name":  "amount",
+                                        "type":  "uint256"
+                                    },
+                                    {
+                                        "internalType":  "string",
+                                        "name":  "purpose",
+                                        "type":  "string"
+                                    },
+                                    {
+                                        "internalType":  "uint256",
+                                        "name":  "repaymentPeriod",
+                                        "type":  "uint256"
+                                    },
+                                    {
+                                        "internalType":  "uint256",
+                                        "name":  "votesFor",
+                                        "type":  "uint256"
+                                    },
+                                    {
+                                        "internalType":  "uint256",
+                                        "name":  "votesAgainst",
+                                        "type":  "uint256"
+                                    },
+                                    {
+                                        "internalType":  "uint256",
+                                        "name":  "createdAt",
+                                        "type":  "uint256"
+                                    },
+                                    {
+                                        "internalType":  "uint256",
+                                        "name":  "deadline",
+                                        "type":  "uint256"
+                                    },
+                                    {
+                                        "internalType":  "bool",
+                                        "name":  "executed",
+                                        "type":  "bool"
+                                    },
+                                    {
+                                        "internalType":  "bool",
+                                        "name":  "approved",
+                                        "type":  "bool"
+                                    }
+                                ],
+                    "stateMutability":  "view",
+                    "type":  "function"
+                },
+                {
+                    "inputs":  [
+                                   {
+                                       "internalType":  "uint256",
+                                       "name":  "_loanId",
+                                       "type":  "uint256"
+                                   }
+                               ],
+                    "name":  "repayLoan",
+                    "outputs":  [
+
+                                ],
+                    "stateMutability":  "payable",
+                    "type":  "function"
+                },
+                {
+                    "inputs":  [
+                                   {
+                                       "internalType":  "uint256",
+                                       "name":  "_chamaId",
+                                       "type":  "uint256"
+                                   },
+                                   {
+                                       "internalType":  "uint256",
+                                       "name":  "_amount",
+                                       "type":  "uint256"
+                                   },
+                                   {
+                                       "internalType":  "string",
+                                       "name":  "_purpose",
+                                       "type":  "string"
+                                   },
+                                   {
+                                       "internalType":  "uint256",
+                                       "name":  "_repaymentPeriod",
+                                       "type":  "uint256"
+                                   }
+                               ],
+                    "name":  "requestLoan",
+                    "outputs":  [
+                                    {
+                                        "internalType":  "uint256",
+                                        "name":  "",
+                                        "type":  "uint256"
+                                    }
+                                ],
+                    "stateMutability":  "nonpayable",
+                    "type":  "function"
+                },
+                {
+                    "inputs":  [
+                                   {
+                                       "internalType":  "address",
+                                       "name":  "",
+                                       "type":  "address"
+                                   },
+                                   {
+                                       "internalType":  "uint256",
+                                       "name":  "",
+                                       "type":  "uint256"
+                                   }
+                               ],
+                    "name":  "userChamas",
+                    "outputs":  [
+                                    {
+                                        "internalType":  "uint256",
+                                        "name":  "",
+                                        "type":  "uint256"
+                                    }
+                                ],
+                    "stateMutability":  "view",
+                    "type":  "function"
+                },
+                {
+                    "inputs":  [
+                                   {
+                                       "internalType":  "uint256",
+                                       "name":  "_loanId",
+                                       "type":  "uint256"
+                                   },
+                                   {
+                                       "internalType":  "bool",
+                                       "name":  "_support",
+                                       "type":  "bool"
+                                   }
+                               ],
+                    "name":  "voteOnLoan",
+                    "outputs":  [
+
+                                ],
+                    "stateMutability":  "nonpayable",
+                    "type":  "function"
+                },
+                {
+                    "stateMutability":  "payable",
+                    "type":  "receive"
+                }
+            ],
+    "transactionHash":  "0xb49167759fb26219f0ea1354ea6766270c676d5684793cab568bd9d4b0c8b9f8",
+    "receipt":  {
+                    "to":  null,
+                    "from":  "0xe1e5d5056D8B620eB51Dc63C66A6A56889d6e831",
+                    "contractAddress":  "0xCD41309879BfB57c1b2b19D58b47B190C7387c54",
+                    "transactionIndex":  64,
+                    "gasUsed":  "2039559",
+                    "logsBloom":  "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+                    "blockHash":  "0x381a4770a53cace20627a1eb18d482c1f6076a0faaf8c1a36c6ef13b0e89b53f",
+                    "transactionHash":  "0xb49167759fb26219f0ea1354ea6766270c676d5684793cab568bd9d4b0c8b9f8",
+                    "logs":  [
+
+                             ],
+                    "blockNumber":  9628038,
+                    "cumulativeGasUsed":  "7975357",
+                    "status":  1,
+                    "byzantium":  true
+                },
+    "args":  [
+
+             ],
+    "numDeployments":  1,
+    "solcInputHash":  "5dec0023e44ef6fa3acf4f30e0fbdfa9",
+    "metadata":  "{\"compiler\":{\"version\":\"0.8.20+commit.a1b79de6\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"chamaId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"creator\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"contributionAmount\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"contributionFrequency\",\"type\":\"uint256\"}],\"name\":\"ChamaCreated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"chamaId\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"member\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"timestamp\",\"type\":\"uint256\"}],\"name\":\"ContributionMade\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"chamaId\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"recipient\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"FundsWithdrawn\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"loanId\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"chamaId\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"borrower\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"LoanApproved\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"loanId\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"chamaId\",\"type\":\"uint256\"}],\"name\":\"LoanRejected\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"loanId\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"chamaId\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"borrower\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"purpose\",\"type\":\"string\"}],\"name\":\"LoanRequested\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"chamaId\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"member\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"timestamp\",\"type\":\"uint256\"}],\"name\":\"MemberJoined\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"loanId\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"voter\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"bool\",\"name\":\"support\",\"type\":\"bool\"}],\"name\":\"VoteCast\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"chamaCount\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"chamaMemberList\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"chamaMembers\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"memberAddress\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"totalContributed\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"lastContributionTime\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"joinedAt\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"isActive\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"chamas\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"description\",\"type\":\"string\"},{\"internalType\":\"address\",\"name\":\"creator\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"contributionAmount\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"contributionFrequency\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"createdAt\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"totalContributions\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"memberCount\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"isActive\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_chamaId\",\"type\":\"uint256\"}],\"name\":\"contribute\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"_name\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_description\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"_contributionAmount\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_contributionFrequency\",\"type\":\"uint256\"}],\"name\":\"createChama\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_loanId\",\"type\":\"uint256\"}],\"name\":\"executeLoan\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_chamaId\",\"type\":\"uint256\"}],\"name\":\"getChama\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"description\",\"type\":\"string\"},{\"internalType\":\"address\",\"name\":\"creator\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"contributionAmount\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"contributionFrequency\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"totalContributions\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"memberCount\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"isActive\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_chamaId\",\"type\":\"uint256\"}],\"name\":\"getChamaBalance\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_chamaId\",\"type\":\"uint256\"}],\"name\":\"getChamaMembers\",\"outputs\":[{\"internalType\":\"address[]\",\"name\":\"\",\"type\":\"address[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getContractBalance\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_loanId\",\"type\":\"uint256\"}],\"name\":\"getLoanRequest\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"chamaId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"borrower\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"purpose\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"repaymentPeriod\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"votesFor\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"votesAgainst\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"deadline\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"executed\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"approved\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_chamaId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"_member\",\"type\":\"address\"}],\"name\":\"getMember\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"totalContributed\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"lastContributionTime\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"joinedAt\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"isActive\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_user\",\"type\":\"address\"}],\"name\":\"getUserChamas\",\"outputs\":[{\"internalType\":\"uint256[]\",\"name\":\"\",\"type\":\"uint256[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"hasVoted\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_chamaId\",\"type\":\"uint256\"}],\"name\":\"joinChama\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"loanRequestCount\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"loanRequests\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"chamaId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"borrower\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"purpose\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"repaymentPeriod\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"votesFor\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"votesAgainst\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"createdAt\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"deadline\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"executed\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"approved\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_loanId\",\"type\":\"uint256\"}],\"name\":\"repayLoan\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_chamaId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_amount\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"_purpose\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"_repaymentPeriod\",\"type\":\"uint256\"}],\"name\":\"requestLoan\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"userChamas\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_loanId\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"_support\",\"type\":\"bool\"}],\"name\":\"voteOnLoan\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"stateMutability\":\"payable\",\"type\":\"receive\"}],\"devdoc\":{\"details\":\"Implements transparent treasury management, member contributions, and democratic loan voting\",\"kind\":\"dev\",\"methods\":{\"contribute(uint256)\":{\"params\":{\"_chamaId\":\"ID of the Chama\"}},\"createChama(string,string,uint256,uint256)\":{\"params\":{\"_contributionAmount\":\"Required contribution amount in wei\",\"_contributionFrequency\":\"How often members should contribute (in seconds)\",\"_description\":\"Description and purpose\",\"_name\":\"Name of the Chama\"}},\"executeLoan(uint256)\":{\"params\":{\"_loanId\":\"ID of the loan request\"}},\"joinChama(uint256)\":{\"params\":{\"_chamaId\":\"ID of the Chama to join\"}},\"repayLoan(uint256)\":{\"params\":{\"_loanId\":\"ID of the loan to repay\"}},\"requestLoan(uint256,uint256,string,uint256)\":{\"params\":{\"_amount\":\"Amount to borrow\",\"_chamaId\":\"ID of the Chama\",\"_purpose\":\"Purpose of the loan\",\"_repaymentPeriod\":\"Time to repay (in seconds)\"}},\"voteOnLoan(uint256,bool)\":{\"params\":{\"_loanId\":\"ID of the loan request\",\"_support\":\"True to approve, false to reject\"}}},\"title\":\"ChamaDAO\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"contribute(uint256)\":{\"notice\":\"Make a contribution to the Chama\"},\"createChama(string,string,uint256,uint256)\":{\"notice\":\"Create a new Chama (savings group)\"},\"executeLoan(uint256)\":{\"notice\":\"Execute a loan request after voting period\"},\"getChama(uint256)\":{\"notice\":\"Get Chama details\"},\"getChamaBalance(uint256)\":{\"notice\":\"Get Chama treasury balance\"},\"getChamaMembers(uint256)\":{\"notice\":\"Get all members of a Chama\"},\"getContractBalance()\":{\"notice\":\"Get contract balance\"},\"getLoanRequest(uint256)\":{\"notice\":\"Get loan request details\"},\"getMember(uint256,address)\":{\"notice\":\"Get member details\"},\"getUserChamas(address)\":{\"notice\":\"Get all Chamas a user is part of\"},\"joinChama(uint256)\":{\"notice\":\"Join an existing Chama\"},\"repayLoan(uint256)\":{\"notice\":\"Repay a loan\"},\"requestLoan(uint256,uint256,string,uint256)\":{\"notice\":\"Request a loan from the Chama\"},\"voteOnLoan(uint256,bool)\":{\"notice\":\"Vote on a loan request\"}},\"notice\":\"A decentralized autonomous organization for community savings groups (Chamas)\",\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/ChamaDAO.sol\":\"ChamaDAO\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"contracts/ChamaDAO.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\r\\npragma solidity ^0.8.20;\\r\\n\\r\\n/**\\r\\n * @title ChamaDAO\\r\\n * @notice A decentralized autonomous organization for community savings groups (Chamas)\\r\\n * @dev Implements transparent treasury management, member contributions, and democratic loan voting\\r\\n */\\r\\ncontract ChamaDAO {\\r\\n    // ============ State Variables ============\\r\\n    \\r\\n    struct Chama {\\r\\n        string name;\\r\\n        string description;\\r\\n        address creator;\\r\\n        uint256 contributionAmount;\\r\\n        uint256 contributionFrequency; // in seconds (e.g., 30 days)\\r\\n        uint256 createdAt;\\r\\n        uint256 totalContributions;\\r\\n        uint256 memberCount;\\r\\n        bool isActive;\\r\\n    }\\r\\n    \\r\\n    struct Member {\\r\\n        address memberAddress;\\r\\n        uint256 totalContributed;\\r\\n        uint256 lastContributionTime;\\r\\n        uint256 joinedAt;\\r\\n        bool isActive;\\r\\n    }\\r\\n    \\r\\n    struct LoanRequest {\\r\\n        uint256 chamaId;\\r\\n        address borrower;\\r\\n        uint256 amount;\\r\\n        string purpose;\\r\\n        uint256 repaymentPeriod; // in seconds\\r\\n        uint256 votesFor;\\r\\n        uint256 votesAgainst;\\r\\n        uint256 createdAt;\\r\\n        uint256 deadline;\\r\\n        bool executed;\\r\\n        bool approved;\\r\\n    }\\r\\n    \\r\\n    // Mappings\\r\\n    mapping(uint256 =\u003e Chama) public chamas;\\r\\n    mapping(uint256 =\u003e mapping(address =\u003e Member)) public chamaMembers;\\r\\n    mapping(uint256 =\u003e address[]) public chamaMemberList;\\r\\n    mapping(uint256 =\u003e LoanRequest) public loanRequests;\\r\\n    mapping(uint256 =\u003e mapping(address =\u003e bool)) public hasVoted;\\r\\n    mapping(address =\u003e uint256[]) public userChamas;\\r\\n    \\r\\n    // Counters\\r\\n    uint256 public chamaCount;\\r\\n    uint256 public loanRequestCount;\\r\\n    \\r\\n    // ============ Events ============\\r\\n    \\r\\n    event ChamaCreated(\\r\\n        uint256 indexed chamaId,\\r\\n        string name,\\r\\n        address indexed creator,\\r\\n        uint256 contributionAmount,\\r\\n        uint256 contributionFrequency\\r\\n    );\\r\\n    \\r\\n    event MemberJoined(\\r\\n        uint256 indexed chamaId,\\r\\n        address indexed member,\\r\\n        uint256 timestamp\\r\\n    );\\r\\n    \\r\\n    event ContributionMade(\\r\\n        uint256 indexed chamaId,\\r\\n        address indexed member,\\r\\n        uint256 amount,\\r\\n        uint256 timestamp\\r\\n    );\\r\\n    \\r\\n    event LoanRequested(\\r\\n        uint256 indexed loanId,\\r\\n        uint256 indexed chamaId,\\r\\n        address indexed borrower,\\r\\n        uint256 amount,\\r\\n        string purpose\\r\\n    );\\r\\n    \\r\\n    event VoteCast(\\r\\n        uint256 indexed loanId,\\r\\n        address indexed voter,\\r\\n        bool support\\r\\n    );\\r\\n    \\r\\n    event LoanApproved(\\r\\n        uint256 indexed loanId,\\r\\n        uint256 indexed chamaId,\\r\\n        address indexed borrower,\\r\\n        uint256 amount\\r\\n    );\\r\\n    \\r\\n    event LoanRejected(\\r\\n        uint256 indexed loanId,\\r\\n        uint256 indexed chamaId\\r\\n    );\\r\\n    \\r\\n    event FundsWithdrawn(\\r\\n        uint256 indexed chamaId,\\r\\n        address indexed recipient,\\r\\n        uint256 amount\\r\\n    );\\r\\n    \\r\\n    // ============ Modifiers ============\\r\\n    \\r\\n    modifier chamaExists(uint256 _chamaId) {\\r\\n        require(_chamaId \u003c chamaCount, \\\"Chama does not exist\\\");\\r\\n        require(chamas[_chamaId].isActive, \\\"Chama is not active\\\");\\r\\n        _;\\r\\n    }\\r\\n    \\r\\n    modifier onlyMember(uint256 _chamaId) {\\r\\n        require(\\r\\n            chamaMembers[_chamaId][msg.sender].isActive,\\r\\n            \\\"Not a member of this Chama\\\"\\r\\n        );\\r\\n        _;\\r\\n    }\\r\\n    \\r\\n    modifier onlyCreator(uint256 _chamaId) {\\r\\n        require(\\r\\n            chamas[_chamaId].creator == msg.sender,\\r\\n            \\\"Only creator can perform this action\\\"\\r\\n        );\\r\\n        _;\\r\\n    }\\r\\n    \\r\\n    // ============ Core Functions ============\\r\\n    \\r\\n    /**\\r\\n     * @notice Create a new Chama (savings group)\\r\\n     * @param _name Name of the Chama\\r\\n     * @param _description Description and purpose\\r\\n     * @param _contributionAmount Required contribution amount in wei\\r\\n     * @param _contributionFrequency How often members should contribute (in seconds)\\r\\n     */\\r\\n    function createChama(\\r\\n        string memory _name,\\r\\n        string memory _description,\\r\\n        uint256 _contributionAmount,\\r\\n        uint256 _contributionFrequency\\r\\n    ) external returns (uint256) {\\r\\n        require(bytes(_name).length \u003e 0, \\\"Name cannot be empty\\\");\\r\\n        require(_contributionAmount \u003e 0, \\\"Contribution amount must be greater than 0\\\");\\r\\n        require(_contributionFrequency \u003e 0, \\\"Contribution frequency must be greater than 0\\\");\\r\\n        \\r\\n        uint256 chamaId = chamaCount++;\\r\\n        \\r\\n        chamas[chamaId] = Chama({\\r\\n            name: _name,\\r\\n            description: _description,\\r\\n            creator: msg.sender,\\r\\n            contributionAmount: _contributionAmount,\\r\\n            contributionFrequency: _contributionFrequency,\\r\\n            createdAt: block.timestamp,\\r\\n            totalContributions: 0,\\r\\n            memberCount: 0,\\r\\n            isActive: true\\r\\n        });\\r\\n        \\r\\n        // Creator automatically becomes first member\\r\\n        _addMember(chamaId, msg.sender);\\r\\n        \\r\\n        emit ChamaCreated(\\r\\n            chamaId,\\r\\n            _name,\\r\\n            msg.sender,\\r\\n            _contributionAmount,\\r\\n            _contributionFrequency\\r\\n        );\\r\\n        \\r\\n        return chamaId;\\r\\n    }\\r\\n    \\r\\n    /**\\r\\n     * @notice Join an existing Chama\\r\\n     * @param _chamaId ID of the Chama to join\\r\\n     */\\r\\n    function joinChama(uint256 _chamaId) external chamaExists(_chamaId) {\\r\\n        require(\\r\\n            !chamaMembers[_chamaId][msg.sender].isActive,\\r\\n            \\\"Already a member\\\"\\r\\n        );\\r\\n        \\r\\n        _addMember(_chamaId, msg.sender);\\r\\n        \\r\\n        emit MemberJoined(_chamaId, msg.sender, block.timestamp);\\r\\n    }\\r\\n    \\r\\n    /**\\r\\n     * @notice Make a contribution to the Chama\\r\\n     * @param _chamaId ID of the Chama\\r\\n     */\\r\\n    function contribute(uint256 _chamaId) \\r\\n        external \\r\\n        payable \\r\\n        chamaExists(_chamaId) \\r\\n        onlyMember(_chamaId) \\r\\n    {\\r\\n        Chama storage chama = chamas[_chamaId];\\r\\n        Member storage member = chamaMembers[_chamaId][msg.sender];\\r\\n        \\r\\n        require(\\r\\n            msg.value == chama.contributionAmount,\\r\\n            \\\"Incorrect contribution amount\\\"\\r\\n        );\\r\\n        \\r\\n        member.totalContributed += msg.value;\\r\\n        member.lastContributionTime = block.timestamp;\\r\\n        chama.totalContributions += msg.value;\\r\\n        \\r\\n        emit ContributionMade(_chamaId, msg.sender, msg.value, block.timestamp);\\r\\n    }\\r\\n    \\r\\n    /**\\r\\n     * @notice Request a loan from the Chama\\r\\n     * @param _chamaId ID of the Chama\\r\\n     * @param _amount Amount to borrow\\r\\n     * @param _purpose Purpose of the loan\\r\\n     * @param _repaymentPeriod Time to repay (in seconds)\\r\\n     */\\r\\n    function requestLoan(\\r\\n        uint256 _chamaId,\\r\\n        uint256 _amount,\\r\\n        string memory _purpose,\\r\\n        uint256 _repaymentPeriod\\r\\n    ) external chamaExists(_chamaId) onlyMember(_chamaId) returns (uint256) {\\r\\n        require(_amount \u003e 0, \\\"Amount must be greater than 0\\\");\\r\\n        require(_amount \u003c= address(this).balance, \\\"Insufficient Chama funds\\\");\\r\\n        require(bytes(_purpose).length \u003e 0, \\\"Purpose cannot be empty\\\");\\r\\n        require(_repaymentPeriod \u003e 0, \\\"Repayment period must be greater than 0\\\");\\r\\n        \\r\\n        uint256 loanId = loanRequestCount++;\\r\\n        \\r\\n        loanRequests[loanId] = LoanRequest({\\r\\n            chamaId: _chamaId,\\r\\n            borrower: msg.sender,\\r\\n            amount: _amount,\\r\\n            purpose: _purpose,\\r\\n            repaymentPeriod: _repaymentPeriod,\\r\\n            votesFor: 0,\\r\\n            votesAgainst: 0,\\r\\n            createdAt: block.timestamp,\\r\\n            deadline: block.timestamp + 7 days, // 7 days voting period\\r\\n            executed: false,\\r\\n            approved: false\\r\\n        });\\r\\n        \\r\\n        emit LoanRequested(loanId, _chamaId, msg.sender, _amount, _purpose);\\r\\n        \\r\\n        return loanId;\\r\\n    }\\r\\n    \\r\\n    /**\\r\\n     * @notice Vote on a loan request\\r\\n     * @param _loanId ID of the loan request\\r\\n     * @param _support True to approve, false to reject\\r\\n     */\\r\\n    function voteOnLoan(uint256 _loanId, bool _support) external {\\r\\n        require(_loanId \u003c loanRequestCount, \\\"Loan request does not exist\\\");\\r\\n        \\r\\n        LoanRequest storage loan = loanRequests[_loanId];\\r\\n        require(!loan.executed, \\\"Loan already executed\\\");\\r\\n        require(block.timestamp \u003c loan.deadline, \\\"Voting period ended\\\");\\r\\n        require(\\r\\n            chamaMembers[loan.chamaId][msg.sender].isActive,\\r\\n            \\\"Not a member of this Chama\\\"\\r\\n        );\\r\\n        require(!hasVoted[_loanId][msg.sender], \\\"Already voted\\\");\\r\\n        \\r\\n        hasVoted[_loanId][msg.sender] = true;\\r\\n        \\r\\n        if (_support) {\\r\\n            loan.votesFor++;\\r\\n        } else {\\r\\n            loan.votesAgainst++;\\r\\n        }\\r\\n        \\r\\n        emit VoteCast(_loanId, msg.sender, _support);\\r\\n    }\\r\\n    \\r\\n    /**\\r\\n     * @notice Execute a loan request after voting period\\r\\n     * @param _loanId ID of the loan request\\r\\n     */\\r\\n    function executeLoan(uint256 _loanId) external {\\r\\n        require(_loanId \u003c loanRequestCount, \\\"Loan request does not exist\\\");\\r\\n        \\r\\n        LoanRequest storage loan = loanRequests[_loanId];\\r\\n        require(!loan.executed, \\\"Loan already executed\\\");\\r\\n        require(block.timestamp \u003e= loan.deadline, \\\"Voting period not ended\\\");\\r\\n        \\r\\n        loan.executed = true;\\r\\n        \\r\\n        // Simple majority vote\\r\\n        if (loan.votesFor \u003e loan.votesAgainst) {\\r\\n            loan.approved = true;\\r\\n            \\r\\n            // Transfer funds to borrower\\r\\n            (bool success, ) = loan.borrower.call{value: loan.amount}(\\\"\\\");\\r\\n            require(success, \\\"Transfer failed\\\");\\r\\n            \\r\\n            emit LoanApproved(_loanId, loan.chamaId, loan.borrower, loan.amount);\\r\\n        } else {\\r\\n            emit LoanRejected(_loanId, loan.chamaId);\\r\\n        }\\r\\n    }\\r\\n    \\r\\n    /**\\r\\n     * @notice Repay a loan\\r\\n     * @param _loanId ID of the loan to repay\\r\\n     */\\r\\n    function repayLoan(uint256 _loanId) external payable {\\r\\n        require(_loanId \u003c loanRequestCount, \\\"Loan request does not exist\\\");\\r\\n        \\r\\n        LoanRequest storage loan = loanRequests[_loanId];\\r\\n        require(loan.executed \u0026\u0026 loan.approved, \\\"Loan not approved\\\");\\r\\n        require(msg.sender == loan.borrower, \\\"Only borrower can repay\\\");\\r\\n        require(msg.value == loan.amount, \\\"Incorrect repayment amount\\\");\\r\\n        \\r\\n        // Funds automatically added to Chama treasury\\r\\n        chamas[loan.chamaId].totalContributions += msg.value;\\r\\n    }\\r\\n    \\r\\n    // ============ View Functions ============\\r\\n    \\r\\n    /**\\r\\n     * @notice Get Chama details\\r\\n     */\\r\\n    function getChama(uint256 _chamaId) \\r\\n        external \\r\\n        view \\r\\n        returns (\\r\\n            string memory name,\\r\\n            string memory description,\\r\\n            address creator,\\r\\n            uint256 contributionAmount,\\r\\n            uint256 contributionFrequency,\\r\\n            uint256 totalContributions,\\r\\n            uint256 memberCount,\\r\\n            bool isActive\\r\\n        ) \\r\\n    {\\r\\n        Chama memory chama = chamas[_chamaId];\\r\\n        return (\\r\\n            chama.name,\\r\\n            chama.description,\\r\\n            chama.creator,\\r\\n            chama.contributionAmount,\\r\\n            chama.contributionFrequency,\\r\\n            chama.totalContributions,\\r\\n            chama.memberCount,\\r\\n            chama.isActive\\r\\n        );\\r\\n    }\\r\\n    \\r\\n    /**\\r\\n     * @notice Get member details\\r\\n     */\\r\\n    function getMember(uint256 _chamaId, address _member)\\r\\n        external\\r\\n        view\\r\\n        returns (\\r\\n            uint256 totalContributed,\\r\\n            uint256 lastContributionTime,\\r\\n            uint256 joinedAt,\\r\\n            bool isActive\\r\\n        )\\r\\n    {\\r\\n        Member memory member = chamaMembers[_chamaId][_member];\\r\\n        return (\\r\\n            member.totalContributed,\\r\\n            member.lastContributionTime,\\r\\n            member.joinedAt,\\r\\n            member.isActive\\r\\n        );\\r\\n    }\\r\\n    \\r\\n    /**\\r\\n     * @notice Get loan request details\\r\\n     */\\r\\n    function getLoanRequest(uint256 _loanId)\\r\\n        external\\r\\n        view\\r\\n        returns (\\r\\n            uint256 chamaId,\\r\\n            address borrower,\\r\\n            uint256 amount,\\r\\n            string memory purpose,\\r\\n            uint256 repaymentPeriod,\\r\\n            uint256 votesFor,\\r\\n            uint256 votesAgainst,\\r\\n            uint256 deadline,\\r\\n            bool executed,\\r\\n            bool approved\\r\\n        )\\r\\n    {\\r\\n        LoanRequest memory loan = loanRequests[_loanId];\\r\\n        return (\\r\\n            loan.chamaId,\\r\\n            loan.borrower,\\r\\n            loan.amount,\\r\\n            loan.purpose,\\r\\n            loan.repaymentPeriod,\\r\\n            loan.votesFor,\\r\\n            loan.votesAgainst,\\r\\n            loan.deadline,\\r\\n            loan.executed,\\r\\n            loan.approved\\r\\n        );\\r\\n    }\\r\\n    \\r\\n    /**\\r\\n     * @notice Get all members of a Chama\\r\\n     */\\r\\n    function getChamaMembers(uint256 _chamaId) \\r\\n        external \\r\\n        view \\r\\n        returns (address[] memory) \\r\\n    {\\r\\n        return chamaMemberList[_chamaId];\\r\\n    }\\r\\n    \\r\\n    /**\\r\\n     * @notice Get all Chamas a user is part of\\r\\n     */\\r\\n    function getUserChamas(address _user) \\r\\n        external \\r\\n        view \\r\\n        returns (uint256[] memory) \\r\\n    {\\r\\n        return userChamas[_user];\\r\\n    }\\r\\n    \\r\\n    /**\\r\\n     * @notice Get Chama treasury balance\\r\\n     */\\r\\n    function getChamaBalance(uint256 _chamaId) \\r\\n        external \\r\\n        view \\r\\n        chamaExists(_chamaId) \\r\\n        returns (uint256) \\r\\n    {\\r\\n        return chamas[_chamaId].totalContributions;\\r\\n    }\\r\\n    \\r\\n    // ============ Internal Functions ============\\r\\n    \\r\\n    function _addMember(uint256 _chamaId, address _member) internal {\\r\\n        chamaMembers[_chamaId][_member] = Member({\\r\\n            memberAddress: _member,\\r\\n            totalContributed: 0,\\r\\n            lastContributionTime: 0,\\r\\n            joinedAt: block.timestamp,\\r\\n            isActive: true\\r\\n        });\\r\\n        \\r\\n        chamaMemberList[_chamaId].push(_member);\\r\\n        userChamas[_member].push(_chamaId);\\r\\n        chamas[_chamaId].memberCount++;\\r\\n    }\\r\\n    \\r\\n    // ============ Utility Functions ============\\r\\n    \\r\\n    /**\\r\\n     * @notice Get contract balance\\r\\n     */\\r\\n    function getContractBalance() external view returns (uint256) {\\r\\n        return address(this).balance;\\r\\n    }\\r\\n    \\r\\n    receive() external payable {}\\r\\n}\\r\\n\",\"keccak256\":\"0x562034b7efa573fa76d7aa931dfce46b1fb95ddd94d3c764c58e45276920e017\",\"license\":\"MIT\"}},\"version\":1}",
+    "bytecode":  "0x608060405234801561001057600080fd5b506123ee806100206000396000f3fe6080604052600436106101395760003560e01c80637d13ee50116100ab578063b786f9781161006f578063b786f978146104cd578063c087e28b146104e3578063c1cbbca7146104f9578063cb00d3d21461050c578063d1b332f414610539578063dc94babc1461057057600080fd5b80637d13ee501461033c5780638b4968cf1461035c578063a37c456f14610406578063a6e8747a1461049a578063ab7b1c89146104ba57600080fd5b806331488c7f116100fd57806331488c7f146102485780633bea382d1461026a57806343533e1d1461029e57806343859632146102be5780636f9fb98a1461030957806370e92c2f1461031c57600080fd5b80630264ce5d146101455780630b5d708514610182578063177c1bf6146101b75780631b3b8671146101e5578063308cfde41461021b57600080fd5b3661014057005b600080fd5b34801561015157600080fd5b50610165610160366004611c2e565b610590565b6040516001600160a01b0390911681526020015b60405180910390f35b34801561018e57600080fd5b506101a261019d366004611c50565b6105c8565b60405161017999989796959493929190611caf565b3480156101c357600080fd5b506101d76101d2366004611dbe565b61072d565b604051908152602001610179565b3480156101f157600080fd5b50610205610200366004611c50565b6109a0565b6040516101799a99989796959493929190611e32565b34801561022757600080fd5b5061023b610236366004611ebb565b610b67565b6040516101799190611edd565b34801561025457600080fd5b50610268610263366004611f21565b610bd3565b005b34801561027657600080fd5b5061028a610285366004611c50565b610dcc565b604051610179989796959493929190611f56565b3480156102aa57600080fd5b506102686102b9366004611c50565b610fdf565b3480156102ca57600080fd5b506102f96102d9366004611fbc565b600460209081526000928352604080842090915290825290205460ff1681565b6040519015158152602001610179565b34801561031557600080fd5b50476101d7565b34801561032857600080fd5b50610268610337366004611c50565b6110d7565b34801561034857600080fd5b506101d7610357366004611fe8565b6112f5565b34801561036857600080fd5b506103e4610377366004611fbc565b60009182526001602081815260408085206001600160a01b039485168652825293849020845160a0810186528154909416845291820154908301819052600282015493830184905260038201546060840181905260049092015460ff161515608090930183905293909190565b6040805194855260208501939093529183015215156060820152608001610179565b34801561041257600080fd5b50610466610421366004611fbc565b60016020818152600093845260408085209091529183529120805491810154600282015460038301546004909301546001600160a01b03909416939192909160ff1685565b604080516001600160a01b03909616865260208601949094529284019190915260608301521515608082015260a001610179565b3480156104a657600080fd5b506101d76104b5366004611c50565b611326565b6102686104c8366004611c50565b611396565b3480156104d957600080fd5b506101d760075481565b3480156104ef57600080fd5b506101d760065481565b610268610507366004611c50565b6114fd565b34801561051857600080fd5b5061052c610527366004611c50565b61167e565b6040516101799190612012565b34801561054557600080fd5b50610559610554366004611c50565b6116e9565b6040516101799b9a99989796959493929190612053565b34801561057c57600080fd5b506101d761058b3660046120c6565b6117da565b600260205281600052604060002081815481106105ac57600080fd5b6000918252602090912001546001600160a01b03169150829050565b6000602081905290815260409020805481906105e39061211e565b80601f016020809104026020016040519081016040528092919081815260200182805461060f9061211e565b801561065c5780601f106106315761010080835404028352916020019161065c565b820191906000526020600020905b81548152906001019060200180831161063f57829003601f168201915b5050505050908060010180546106719061211e565b80601f016020809104026020016040519081016040528092919081815260200182805461069d9061211e565b80156106ea5780601f106106bf576101008083540402835291602001916106ea565b820191906000526020600020905b8154815290600101906020018083116106cd57829003601f168201915b5050505060028301546003840154600485015460058601546006870154600788015460089098015496976001600160a01b03909516969395509193909260ff1689565b60008085511161077b5760405162461bcd60e51b81526020600482015260146024820152734e616d652063616e6e6f7420626520656d70747960601b60448201526064015b60405180910390fd5b600083116107de5760405162461bcd60e51b815260206004820152602a60248201527f436f6e747269627574696f6e20616d6f756e74206d75737420626520677265616044820152690746572207468616e20360b41b6064820152608401610772565b600082116108445760405162461bcd60e51b815260206004820152602d60248201527f436f6e747269627574696f6e206672657175656e6379206d757374206265206760448201526c0726561746572207468616e203609c1b6064820152608401610772565b600680546000918261085583612168565b9091555060408051610120810182528881526020808201899052338284015260608201889052608082018790524260a0830152600060c0830181905260e08301819052600161010084015284815290819052919091208151929350909181906108be90826121d0565b50602082015160018201906108d390826121d0565b5060408201516002820180546001600160a01b0319166001600160a01b03909216919091179055606082015160038201556080820151600482015560a0820151600582015560c0820151600682015560e08201516007820155610100909101516008909101805460ff19169115159190911790556109518133611b41565b336001600160a01b0316817f04d73e30c232af490ffcbd71f12c633f00cdba5a912f5ab4ab990bfb2e13f90788878760405161098f93929190612290565b60405180910390a395945050505050565b600080600060606000806000806000806000600360008d815260200190815260200160002060405180610160016040529081600082015481526020016001820160009054906101000a90046001600160a01b03166001600160a01b03166001600160a01b0316815260200160028201548152602001600382018054610a249061211e565b80601f0160208091040260200160405190810160405280929190818152602001828054610a509061211e565b8015610a9d5780601f10610a7257610100808354040283529160200191610a9d565b820191906000526020600020905b815481529060010190602001808311610a8057829003601f168201915b5050505050815260200160048201548152602001600582015481526020016006820154815260200160078201548152602001600882015481526020016009820160009054906101000a900460ff161515151581526020016009820160019054906101000a900460ff1615151515815250509050806000015181602001518260400151836060015184608001518560a001518660c001518761010001518861012001518961014001519a509a509a509a509a509a509a509a509a509a50509193959799509193959799565b6001600160a01b038116600090815260056020908152604091829020805483518184028101840190945280845260609392830182828015610bc757602002820191906000526020600020905b815481526020019060010190808311610bb3575b50505050509050919050565b6007548210610bf45760405162461bcd60e51b8152600401610772906122b5565b6000828152600360205260409020600981015460ff1615610c4f5760405162461bcd60e51b8152602060048201526015602482015274131bd85b88185b1c9958591e48195e1958dd5d1959605a1b6044820152606401610772565b80600801544210610c985760405162461bcd60e51b8152602060048201526013602482015272159bdd1a5b99c81c195c9a5bd908195b991959606a1b6044820152606401610772565b8054600090815260016020908152604080832033845290915290206004015460ff16610cd65760405162461bcd60e51b8152600401610772906122ec565b600083815260046020908152604080832033845290915290205460ff1615610d305760405162461bcd60e51b815260206004820152600d60248201526c105b1c9958591e481d9bdd1959609a1b6044820152606401610772565b60008381526004602090815260408083203384529091529020805460ff191660011790558115610d7657600581018054906000610d6c83612168565b9190505550610d8e565b600681018054906000610d8883612168565b91905055505b6040518215158152339084907fe71fcdac32df1877c1700e7bda2a03157e20993363a28fc35ac495cefc76e4d49060200160405180910390a3505050565b60608060008060008060008060008060008b815260200190815260200160002060405180610120016040529081600082018054610e089061211e565b80601f0160208091040260200160405190810160405280929190818152602001828054610e349061211e565b8015610e815780601f10610e5657610100808354040283529160200191610e81565b820191906000526020600020905b815481529060010190602001808311610e6457829003601f168201915b50505050508152602001600182018054610e9a9061211e565b80601f0160208091040260200160405190810160405280929190818152602001828054610ec69061211e565b8015610f135780601f10610ee857610100808354040283529160200191610f13565b820191906000526020600020905b815481529060010190602001808311610ef657829003601f168201915b505050505081526020016002820160009054906101000a90046001600160a01b03166001600160a01b03166001600160a01b0316815260200160038201548152602001600482015481526020016005820154815260200160068201548152602001600782015481526020016008820160009054906101000a900460ff1615151515815250509050806000015181602001518260400151836060015184608001518560c001518660e001518761010001519850985098509850985098509850985050919395975091939597565b8060065481106110015760405162461bcd60e51b815260040161077290612323565b60008181526020819052604090206008015460ff166110325760405162461bcd60e51b815260040161077290612351565b600082815260016020908152604080832033845290915290206004015460ff16156110925760405162461bcd60e51b815260206004820152601060248201526f20b63932b0b23c90309036b2b6b132b960811b6044820152606401610772565b61109c8233611b41565b604051428152339083907ff4f82575ee84a81aac4be52b6a368e9ba9df524b4f5cf8177d7cfbabe861820c9060200160405180910390a35050565b60075481106110f85760405162461bcd60e51b8152600401610772906122b5565b6000818152600360205260409020600981015460ff16156111535760405162461bcd60e51b8152602060048201526015602482015274131bd85b88185b1c9958591e48195e1958dd5d1959605a1b6044820152606401610772565b80600801544210156111a75760405162461bcd60e51b815260206004820152601760248201527f566f74696e6720706572696f64206e6f7420656e6465640000000000000000006044820152606401610772565b60098101805460ff191660011790556006810154600582015411156112c45760098101805461ff001916610100179055600181015460028201546040516000926001600160a01b031691908381818185875af1925050503d806000811461122a576040519150601f19603f3d011682016040523d82523d6000602084013e61122f565b606091505b50509050806112725760405162461bcd60e51b815260206004820152600f60248201526e151c985b9cd9995c8819985a5b1959608a1b6044820152606401610772565b6001820154825460028401546040519081526001600160a01b039092169185907fd767ec47918349ada423777e80d75a6bcd9b3395c6c739b67adcdb89ebe38e3b9060200160405180910390a4505050565b805460405183907f6340ab6204b79727fc43484a3379e19dd62630c7d0a3fd3550286e88e8ff175f90600090a35050565b6005602052816000526040600020818154811061131157600080fd5b90600052602060002001600091509150505481565b600081600654811061134a5760405162461bcd60e51b815260040161077290612323565b60008181526020819052604090206008015460ff1661137b5760405162461bcd60e51b815260040161077290612351565b60008381526020819052604090206006015491505b50919050565b60075481106113b75760405162461bcd60e51b8152600401610772906122b5565b6000818152600360205260409020600981015460ff1680156113e257506009810154610100900460ff165b6114225760405162461bcd60e51b8152602060048201526011602482015270131bd85b881b9bdd08185c1c1c9bdd9959607a1b6044820152606401610772565b60018101546001600160a01b0316331461147e5760405162461bcd60e51b815260206004820152601760248201527f4f6e6c7920626f72726f7765722063616e2072657061790000000000000000006044820152606401610772565b806002015434146114d15760405162461bcd60e51b815260206004820152601a60248201527f496e636f72726563742072657061796d656e7420616d6f756e740000000000006044820152606401610772565b8054600090815260208190526040812060060180543492906114f490849061237e565b90915550505050565b80600654811061151f5760405162461bcd60e51b815260040161077290612323565b60008181526020819052604090206008015460ff166115505760405162461bcd60e51b815260040161077290612351565b6000828152600160209081526040808320338452909152902060040154829060ff1661158e5760405162461bcd60e51b8152600401610772906122ec565b60008381526020818152604080832060018352818420338552909252909120600382015434146116005760405162461bcd60e51b815260206004820152601d60248201527f496e636f727265637420636f6e747269627574696f6e20616d6f756e740000006044820152606401610772565b34816001016000828254611614919061237e565b909155505042600282015560068201805434919060009061163690849061237e565b909155505060408051348152426020820152339187917ff9b7589b7a8d939b9da5dae90770378fe5fd7802be5d66432e85bedbdbfbcb7a910160405180910390a35050505050565b600081815260026020908152604091829020805483518184028101840190945280845260609392830182828015610bc757602002820191906000526020600020905b81546001600160a01b031681526001909101906020018083116116c05750505050509050919050565b6003602081905260009182526040909120805460018201546002830154938301805492946001600160a01b039092169391926117249061211e565b80601f01602080910402602001604051908101604052809291908181526020018280546117509061211e565b801561179d5780601f106117725761010080835404028352916020019161179d565b820191906000526020600020905b81548152906001019060200180831161178057829003601f168201915b5050506004840154600585015460068601546007870154600888015460099098015496979396929550909350919060ff808216916101009004168b565b60008460065481106117fe5760405162461bcd60e51b815260040161077290612323565b60008181526020819052604090206008015460ff1661182f5760405162461bcd60e51b815260040161077290612351565b6000868152600160209081526040808320338452909152902060040154869060ff1661186d5760405162461bcd60e51b8152600401610772906122ec565b600086116118bd5760405162461bcd60e51b815260206004820152601d60248201527f416d6f756e74206d7573742062652067726561746572207468616e20300000006044820152606401610772565b4786111561190d5760405162461bcd60e51b815260206004820152601860248201527f496e73756666696369656e74204368616d612066756e647300000000000000006044820152606401610772565b600085511161195e5760405162461bcd60e51b815260206004820152601760248201527f507572706f73652063616e6e6f7420626520656d7074790000000000000000006044820152606401610772565b600084116119be5760405162461bcd60e51b815260206004820152602760248201527f52657061796d656e7420706572696f64206d75737420626520677265617465726044820152660207468616e20360cc1b6064820152608401610772565b60078054600091826119cf83612168565b919050559050604051806101600160405280898152602001336001600160a01b0316815260200188815260200187815260200186815260200160008152602001600081526020014281526020014262093a80611a2b919061237e565b815260006020808301829052604092830182905284825260038082529183902084518155908401516001820180546001600160a01b0319166001600160a01b03909216919091179055918301516002830155606083015190820190611a9090826121d0565b506080820151600482015560a0820151600582015560c0820151600682015560e08201516007820155610100808301516008830155610120830151600990920180546101409094015161ffff1990941692151561ff00191692909217921515029190911790556040513390899083907f825285eba0ed8ce5643a15a65fe8281c121e0ed163df7459c400072873d88e5190611b2e908c908c90612397565b60405180910390a4979650505050505050565b6040805160a0810182526001600160a01b038084168083526000602080850182815285870183815242606088019081526001608089018181528c87528186528a872088885286528a872099518a5499166001600160a01b0319998a16178a5593518982015591516002808a01919091559051600389015591516004909701805497151560ff1990981697909717909655888352815285822080548087018255908352818320018054909416831790935590815260058252838120805493840181558152818120909201859055848252819052908120600701805491611c2583612168565b91905055505050565b60008060408385031215611c4157600080fd5b50508035926020909101359150565b600060208284031215611c6257600080fd5b5035919050565b6000815180845260005b81811015611c8f57602081850181015186830182015201611c73565b506000602082860101526020601f19601f83011685010191505092915050565b6000610120808352611cc38184018d611c69565b90508281036020840152611cd7818c611c69565b6001600160a01b039a909a16604084015250506060810196909652608086019490945260a085019290925260c084015260e083015215156101009091015292915050565b634e487b7160e01b600052604160045260246000fd5b600082601f830112611d4257600080fd5b813567ffffffffffffffff80821115611d5d57611d5d611d1b565b604051601f8301601f19908116603f01168101908282118183101715611d8557611d85611d1b565b81604052838152866020858801011115611d9e57600080fd5b836020870160208301376000602085830101528094505050505092915050565b60008060008060808587031215611dd457600080fd5b843567ffffffffffffffff80821115611dec57600080fd5b611df888838901611d31565b95506020870135915080821115611e0e57600080fd5b50611e1b87828801611d31565b949794965050505060408301359260600135919050565b8a81526001600160a01b038a1660208201526040810189905261014060608201819052600090611e648382018b611c69565b6080840199909952505060a081019590955260c085019390935260e08401919091521515610100830152151561012090910152949350505050565b80356001600160a01b0381168114611eb657600080fd5b919050565b600060208284031215611ecd57600080fd5b611ed682611e9f565b9392505050565b6020808252825182820181905260009190848201906040850190845b81811015611f1557835183529284019291840191600101611ef9565b50909695505050505050565b60008060408385031215611f3457600080fd5b8235915060208301358015158114611f4b57600080fd5b809150509250929050565b6000610100808352611f6a8184018c611c69565b90508281036020840152611f7e818b611c69565b6001600160a01b0399909916604084015250506060810195909552608085019390935260a084019190915260c0830152151560e09091015292915050565b60008060408385031215611fcf57600080fd5b82359150611fdf60208401611e9f565b90509250929050565b60008060408385031215611ffb57600080fd5b61200483611e9f565b946020939093013593505050565b6020808252825182820181905260009190848201906040850190845b81811015611f155783516001600160a01b03168352928401929184019160010161202e565b8b81526001600160a01b038b166020820152604081018a9052610160606082018190526000906120858382018c611c69565b608084019a909a52505060a081019690965260c086019490945260e08501929092526101008401521515610120830152151561014090910152949350505050565b600080600080608085870312156120dc57600080fd5b8435935060208501359250604085013567ffffffffffffffff81111561210157600080fd5b61210d87828801611d31565b949793965093946060013593505050565b600181811c9082168061213257607f821691505b60208210810361139057634e487b7160e01b600052602260045260246000fd5b634e487b7160e01b600052601160045260246000fd5b60006001820161217a5761217a612152565b5060010190565b601f8211156121cb57600081815260208120601f850160051c810160208610156121a85750805b601f850160051c820191505b818110156121c7578281556001016121b4565b5050505b505050565b815167ffffffffffffffff8111156121ea576121ea611d1b565b6121fe816121f8845461211e565b84612181565b602080601f831160018114612233576000841561221b5750858301515b600019600386901b1c1916600185901b1785556121c7565b600085815260208120601f198616915b8281101561226257888601518255948401946001909101908401612243565b50858210156122805787850151600019600388901b60f8161c191681555b5050505050600190811b01905550565b6060815260006122a36060830186611c69565b60208301949094525060400152919050565b6020808252601b908201527f4c6f616e207265717565737420646f6573206e6f742065786973740000000000604082015260600190565b6020808252601a908201527f4e6f742061206d656d626572206f662074686973204368616d61000000000000604082015260600190565b60208082526014908201527310da185b5848191bd95cc81b9bdd08195e1a5cdd60621b604082015260600190565b6020808252601390820152724368616d61206973206e6f742061637469766560681b604082015260600190565b8082018082111561239157612391612152565b92915050565b8281526040602082015260006123b06040830184611c69565b94935050505056fea2646970667358221220f7cc5568d5dcdd954abdfd4aeb47341f93a10e14114104c2798c97484dfc55f764736f6c63430008140033",
+    "deployedBytecode":  "0x6080604052600436106101395760003560e01c80637d13ee50116100ab578063b786f9781161006f578063b786f978146104cd578063c087e28b146104e3578063c1cbbca7146104f9578063cb00d3d21461050c578063d1b332f414610539578063dc94babc1461057057600080fd5b80637d13ee501461033c5780638b4968cf1461035c578063a37c456f14610406578063a6e8747a1461049a578063ab7b1c89146104ba57600080fd5b806331488c7f116100fd57806331488c7f146102485780633bea382d1461026a57806343533e1d1461029e57806343859632146102be5780636f9fb98a1461030957806370e92c2f1461031c57600080fd5b80630264ce5d146101455780630b5d708514610182578063177c1bf6146101b75780631b3b8671146101e5578063308cfde41461021b57600080fd5b3661014057005b600080fd5b34801561015157600080fd5b50610165610160366004611c2e565b610590565b6040516001600160a01b0390911681526020015b60405180910390f35b34801561018e57600080fd5b506101a261019d366004611c50565b6105c8565b60405161017999989796959493929190611caf565b3480156101c357600080fd5b506101d76101d2366004611dbe565b61072d565b604051908152602001610179565b3480156101f157600080fd5b50610205610200366004611c50565b6109a0565b6040516101799a99989796959493929190611e32565b34801561022757600080fd5b5061023b610236366004611ebb565b610b67565b6040516101799190611edd565b34801561025457600080fd5b50610268610263366004611f21565b610bd3565b005b34801561027657600080fd5b5061028a610285366004611c50565b610dcc565b604051610179989796959493929190611f56565b3480156102aa57600080fd5b506102686102b9366004611c50565b610fdf565b3480156102ca57600080fd5b506102f96102d9366004611fbc565b600460209081526000928352604080842090915290825290205460ff1681565b6040519015158152602001610179565b34801561031557600080fd5b50476101d7565b34801561032857600080fd5b50610268610337366004611c50565b6110d7565b34801561034857600080fd5b506101d7610357366004611fe8565b6112f5565b34801561036857600080fd5b506103e4610377366004611fbc565b60009182526001602081815260408085206001600160a01b039485168652825293849020845160a0810186528154909416845291820154908301819052600282015493830184905260038201546060840181905260049092015460ff161515608090930183905293909190565b6040805194855260208501939093529183015215156060820152608001610179565b34801561041257600080fd5b50610466610421366004611fbc565b60016020818152600093845260408085209091529183529120805491810154600282015460038301546004909301546001600160a01b03909416939192909160ff1685565b604080516001600160a01b03909616865260208601949094529284019190915260608301521515608082015260a001610179565b3480156104a657600080fd5b506101d76104b5366004611c50565b611326565b6102686104c8366004611c50565b611396565b3480156104d957600080fd5b506101d760075481565b3480156104ef57600080fd5b506101d760065481565b610268610507366004611c50565b6114fd565b34801561051857600080fd5b5061052c610527366004611c50565b61167e565b6040516101799190612012565b34801561054557600080fd5b50610559610554366004611c50565b6116e9565b6040516101799b9a99989796959493929190612053565b34801561057c57600080fd5b506101d761058b3660046120c6565b6117da565b600260205281600052604060002081815481106105ac57600080fd5b6000918252602090912001546001600160a01b03169150829050565b6000602081905290815260409020805481906105e39061211e565b80601f016020809104026020016040519081016040528092919081815260200182805461060f9061211e565b801561065c5780601f106106315761010080835404028352916020019161065c565b820191906000526020600020905b81548152906001019060200180831161063f57829003601f168201915b5050505050908060010180546106719061211e565b80601f016020809104026020016040519081016040528092919081815260200182805461069d9061211e565b80156106ea5780601f106106bf576101008083540402835291602001916106ea565b820191906000526020600020905b8154815290600101906020018083116106cd57829003601f168201915b5050505060028301546003840154600485015460058601546006870154600788015460089098015496976001600160a01b03909516969395509193909260ff1689565b60008085511161077b5760405162461bcd60e51b81526020600482015260146024820152734e616d652063616e6e6f7420626520656d70747960601b60448201526064015b60405180910390fd5b600083116107de5760405162461bcd60e51b815260206004820152602a60248201527f436f6e747269627574696f6e20616d6f756e74206d75737420626520677265616044820152690746572207468616e20360b41b6064820152608401610772565b600082116108445760405162461bcd60e51b815260206004820152602d60248201527f436f6e747269627574696f6e206672657175656e6379206d757374206265206760448201526c0726561746572207468616e203609c1b6064820152608401610772565b600680546000918261085583612168565b9091555060408051610120810182528881526020808201899052338284015260608201889052608082018790524260a0830152600060c0830181905260e08301819052600161010084015284815290819052919091208151929350909181906108be90826121d0565b50602082015160018201906108d390826121d0565b5060408201516002820180546001600160a01b0319166001600160a01b03909216919091179055606082015160038201556080820151600482015560a0820151600582015560c0820151600682015560e08201516007820155610100909101516008909101805460ff19169115159190911790556109518133611b41565b336001600160a01b0316817f04d73e30c232af490ffcbd71f12c633f00cdba5a912f5ab4ab990bfb2e13f90788878760405161098f93929190612290565b60405180910390a395945050505050565b600080600060606000806000806000806000600360008d815260200190815260200160002060405180610160016040529081600082015481526020016001820160009054906101000a90046001600160a01b03166001600160a01b03166001600160a01b0316815260200160028201548152602001600382018054610a249061211e565b80601f0160208091040260200160405190810160405280929190818152602001828054610a509061211e565b8015610a9d5780601f10610a7257610100808354040283529160200191610a9d565b820191906000526020600020905b815481529060010190602001808311610a8057829003601f168201915b5050505050815260200160048201548152602001600582015481526020016006820154815260200160078201548152602001600882015481526020016009820160009054906101000a900460ff161515151581526020016009820160019054906101000a900460ff1615151515815250509050806000015181602001518260400151836060015184608001518560a001518660c001518761010001518861012001518961014001519a509a509a509a509a509a509a509a509a509a50509193959799509193959799565b6001600160a01b038116600090815260056020908152604091829020805483518184028101840190945280845260609392830182828015610bc757602002820191906000526020600020905b815481526020019060010190808311610bb3575b50505050509050919050565b6007548210610bf45760405162461bcd60e51b8152600401610772906122b5565b6000828152600360205260409020600981015460ff1615610c4f5760405162461bcd60e51b8152602060048201526015602482015274131bd85b88185b1c9958591e48195e1958dd5d1959605a1b6044820152606401610772565b80600801544210610c985760405162461bcd60e51b8152602060048201526013602482015272159bdd1a5b99c81c195c9a5bd908195b991959606a1b6044820152606401610772565b8054600090815260016020908152604080832033845290915290206004015460ff16610cd65760405162461bcd60e51b8152600401610772906122ec565b600083815260046020908152604080832033845290915290205460ff1615610d305760405162461bcd60e51b815260206004820152600d60248201526c105b1c9958591e481d9bdd1959609a1b6044820152606401610772565b60008381526004602090815260408083203384529091529020805460ff191660011790558115610d7657600581018054906000610d6c83612168565b9190505550610d8e565b600681018054906000610d8883612168565b91905055505b6040518215158152339084907fe71fcdac32df1877c1700e7bda2a03157e20993363a28fc35ac495cefc76e4d49060200160405180910390a3505050565b60608060008060008060008060008060008b815260200190815260200160002060405180610120016040529081600082018054610e089061211e565b80601f0160208091040260200160405190810160405280929190818152602001828054610e349061211e565b8015610e815780601f10610e5657610100808354040283529160200191610e81565b820191906000526020600020905b815481529060010190602001808311610e6457829003601f168201915b50505050508152602001600182018054610e9a9061211e565b80601f0160208091040260200160405190810160405280929190818152602001828054610ec69061211e565b8015610f135780601f10610ee857610100808354040283529160200191610f13565b820191906000526020600020905b815481529060010190602001808311610ef657829003601f168201915b505050505081526020016002820160009054906101000a90046001600160a01b03166001600160a01b03166001600160a01b0316815260200160038201548152602001600482015481526020016005820154815260200160068201548152602001600782015481526020016008820160009054906101000a900460ff1615151515815250509050806000015181602001518260400151836060015184608001518560c001518660e001518761010001519850985098509850985098509850985050919395975091939597565b8060065481106110015760405162461bcd60e51b815260040161077290612323565b60008181526020819052604090206008015460ff166110325760405162461bcd60e51b815260040161077290612351565b600082815260016020908152604080832033845290915290206004015460ff16156110925760405162461bcd60e51b815260206004820152601060248201526f20b63932b0b23c90309036b2b6b132b960811b6044820152606401610772565b61109c8233611b41565b604051428152339083907ff4f82575ee84a81aac4be52b6a368e9ba9df524b4f5cf8177d7cfbabe861820c9060200160405180910390a35050565b60075481106110f85760405162461bcd60e51b8152600401610772906122b5565b6000818152600360205260409020600981015460ff16156111535760405162461bcd60e51b8152602060048201526015602482015274131bd85b88185b1c9958591e48195e1958dd5d1959605a1b6044820152606401610772565b80600801544210156111a75760405162461bcd60e51b815260206004820152601760248201527f566f74696e6720706572696f64206e6f7420656e6465640000000000000000006044820152606401610772565b60098101805460ff191660011790556006810154600582015411156112c45760098101805461ff001916610100179055600181015460028201546040516000926001600160a01b031691908381818185875af1925050503d806000811461122a576040519150601f19603f3d011682016040523d82523d6000602084013e61122f565b606091505b50509050806112725760405162461bcd60e51b815260206004820152600f60248201526e151c985b9cd9995c8819985a5b1959608a1b6044820152606401610772565b6001820154825460028401546040519081526001600160a01b039092169185907fd767ec47918349ada423777e80d75a6bcd9b3395c6c739b67adcdb89ebe38e3b9060200160405180910390a4505050565b805460405183907f6340ab6204b79727fc43484a3379e19dd62630c7d0a3fd3550286e88e8ff175f90600090a35050565b6005602052816000526040600020818154811061131157600080fd5b90600052602060002001600091509150505481565b600081600654811061134a5760405162461bcd60e51b815260040161077290612323565b60008181526020819052604090206008015460ff1661137b5760405162461bcd60e51b815260040161077290612351565b60008381526020819052604090206006015491505b50919050565b60075481106113b75760405162461bcd60e51b8152600401610772906122b5565b6000818152600360205260409020600981015460ff1680156113e257506009810154610100900460ff165b6114225760405162461bcd60e51b8152602060048201526011602482015270131bd85b881b9bdd08185c1c1c9bdd9959607a1b6044820152606401610772565b60018101546001600160a01b0316331461147e5760405162461bcd60e51b815260206004820152601760248201527f4f6e6c7920626f72726f7765722063616e2072657061790000000000000000006044820152606401610772565b806002015434146114d15760405162461bcd60e51b815260206004820152601a60248201527f496e636f72726563742072657061796d656e7420616d6f756e740000000000006044820152606401610772565b8054600090815260208190526040812060060180543492906114f490849061237e565b90915550505050565b80600654811061151f5760405162461bcd60e51b815260040161077290612323565b60008181526020819052604090206008015460ff166115505760405162461bcd60e51b815260040161077290612351565b6000828152600160209081526040808320338452909152902060040154829060ff1661158e5760405162461bcd60e51b8152600401610772906122ec565b60008381526020818152604080832060018352818420338552909252909120600382015434146116005760405162461bcd60e51b815260206004820152601d60248201527f496e636f727265637420636f6e747269627574696f6e20616d6f756e740000006044820152606401610772565b34816001016000828254611614919061237e565b909155505042600282015560068201805434919060009061163690849061237e565b909155505060408051348152426020820152339187917ff9b7589b7a8d939b9da5dae90770378fe5fd7802be5d66432e85bedbdbfbcb7a910160405180910390a35050505050565b600081815260026020908152604091829020805483518184028101840190945280845260609392830182828015610bc757602002820191906000526020600020905b81546001600160a01b031681526001909101906020018083116116c05750505050509050919050565b6003602081905260009182526040909120805460018201546002830154938301805492946001600160a01b039092169391926117249061211e565b80601f01602080910402602001604051908101604052809291908181526020018280546117509061211e565b801561179d5780601f106117725761010080835404028352916020019161179d565b820191906000526020600020905b81548152906001019060200180831161178057829003601f168201915b5050506004840154600585015460068601546007870154600888015460099098015496979396929550909350919060ff808216916101009004168b565b60008460065481106117fe5760405162461bcd60e51b815260040161077290612323565b60008181526020819052604090206008015460ff1661182f5760405162461bcd60e51b815260040161077290612351565b6000868152600160209081526040808320338452909152902060040154869060ff1661186d5760405162461bcd60e51b8152600401610772906122ec565b600086116118bd5760405162461bcd60e51b815260206004820152601d60248201527f416d6f756e74206d7573742062652067726561746572207468616e20300000006044820152606401610772565b4786111561190d5760405162461bcd60e51b815260206004820152601860248201527f496e73756666696369656e74204368616d612066756e647300000000000000006044820152606401610772565b600085511161195e5760405162461bcd60e51b815260206004820152601760248201527f507572706f73652063616e6e6f7420626520656d7074790000000000000000006044820152606401610772565b600084116119be5760405162461bcd60e51b815260206004820152602760248201527f52657061796d656e7420706572696f64206d75737420626520677265617465726044820152660207468616e20360cc1b6064820152608401610772565b60078054600091826119cf83612168565b919050559050604051806101600160405280898152602001336001600160a01b0316815260200188815260200187815260200186815260200160008152602001600081526020014281526020014262093a80611a2b919061237e565b815260006020808301829052604092830182905284825260038082529183902084518155908401516001820180546001600160a01b0319166001600160a01b03909216919091179055918301516002830155606083015190820190611a9090826121d0565b506080820151600482015560a0820151600582015560c0820151600682015560e08201516007820155610100808301516008830155610120830151600990920180546101409094015161ffff1990941692151561ff00191692909217921515029190911790556040513390899083907f825285eba0ed8ce5643a15a65fe8281c121e0ed163df7459c400072873d88e5190611b2e908c908c90612397565b60405180910390a4979650505050505050565b6040805160a0810182526001600160a01b038084168083526000602080850182815285870183815242606088019081526001608089018181528c87528186528a872088885286528a872099518a5499166001600160a01b0319998a16178a5593518982015591516002808a01919091559051600389015591516004909701805497151560ff1990981697909717909655888352815285822080548087018255908352818320018054909416831790935590815260058252838120805493840181558152818120909201859055848252819052908120600701805491611c2583612168565b91905055505050565b60008060408385031215611c4157600080fd5b50508035926020909101359150565b600060208284031215611c6257600080fd5b5035919050565b6000815180845260005b81811015611c8f57602081850181015186830182015201611c73565b506000602082860101526020601f19601f83011685010191505092915050565b6000610120808352611cc38184018d611c69565b90508281036020840152611cd7818c611c69565b6001600160a01b039a909a16604084015250506060810196909652608086019490945260a085019290925260c084015260e083015215156101009091015292915050565b634e487b7160e01b600052604160045260246000fd5b600082601f830112611d4257600080fd5b813567ffffffffffffffff80821115611d5d57611d5d611d1b565b604051601f8301601f19908116603f01168101908282118183101715611d8557611d85611d1b565b81604052838152866020858801011115611d9e57600080fd5b836020870160208301376000602085830101528094505050505092915050565b60008060008060808587031215611dd457600080fd5b843567ffffffffffffffff80821115611dec57600080fd5b611df888838901611d31565b95506020870135915080821115611e0e57600080fd5b50611e1b87828801611d31565b949794965050505060408301359260600135919050565b8a81526001600160a01b038a1660208201526040810189905261014060608201819052600090611e648382018b611c69565b6080840199909952505060a081019590955260c085019390935260e08401919091521515610100830152151561012090910152949350505050565b80356001600160a01b0381168114611eb657600080fd5b919050565b600060208284031215611ecd57600080fd5b611ed682611e9f565b9392505050565b6020808252825182820181905260009190848201906040850190845b81811015611f1557835183529284019291840191600101611ef9565b50909695505050505050565b60008060408385031215611f3457600080fd5b8235915060208301358015158114611f4b57600080fd5b809150509250929050565b6000610100808352611f6a8184018c611c69565b90508281036020840152611f7e818b611c69565b6001600160a01b0399909916604084015250506060810195909552608085019390935260a084019190915260c0830152151560e09091015292915050565b60008060408385031215611fcf57600080fd5b82359150611fdf60208401611e9f565b90509250929050565b60008060408385031215611ffb57600080fd5b61200483611e9f565b946020939093013593505050565b6020808252825182820181905260009190848201906040850190845b81811015611f155783516001600160a01b03168352928401929184019160010161202e565b8b81526001600160a01b038b166020820152604081018a9052610160606082018190526000906120858382018c611c69565b608084019a909a52505060a081019690965260c086019490945260e08501929092526101008401521515610120830152151561014090910152949350505050565b600080600080608085870312156120dc57600080fd5b8435935060208501359250604085013567ffffffffffffffff81111561210157600080fd5b61210d87828801611d31565b949793965093946060013593505050565b600181811c9082168061213257607f821691505b60208210810361139057634e487b7160e01b600052602260045260246000fd5b634e487b7160e01b600052601160045260246000fd5b60006001820161217a5761217a612152565b5060010190565b601f8211156121cb57600081815260208120601f850160051c810160208610156121a85750805b601f850160051c820191505b818110156121c7578281556001016121b4565b5050505b505050565b815167ffffffffffffffff8111156121ea576121ea611d1b565b6121fe816121f8845461211e565b84612181565b602080601f831160018114612233576000841561221b5750858301515b600019600386901b1c1916600185901b1785556121c7565b600085815260208120601f198616915b8281101561226257888601518255948401946001909101908401612243565b50858210156122805787850151600019600388901b60f8161c191681555b5050505050600190811b01905550565b6060815260006122a36060830186611c69565b60208301949094525060400152919050565b6020808252601b908201527f4c6f616e207265717565737420646f6573206e6f742065786973740000000000604082015260600190565b6020808252601a908201527f4e6f742061206d656d626572206f662074686973204368616d61000000000000604082015260600190565b60208082526014908201527310da185b5848191bd95cc81b9bdd08195e1a5cdd60621b604082015260600190565b6020808252601390820152724368616d61206973206e6f742061637469766560681b604082015260600190565b8082018082111561239157612391612152565b92915050565b8281526040602082015260006123b06040830184611c69565b94935050505056fea2646970667358221220f7cc5568d5dcdd954abdfd4aeb47341f93a10e14114104c2798c97484dfc55f764736f6c63430008140033",
+    "devdoc":  {
+                   "details":  "Implements transparent treasury management, member contributions, and democratic loan voting",
+                   "kind":  "dev",
+                   "methods":  {
+                                   "contribute(uint256)":  {
+                                                               "params":  {
+                                                                              "_chamaId":  "ID of the Chama"
+                                                                          }
+                                                           },
+                                   "createChama(string,string,uint256,uint256)":  {
+                                                                                      "params":  {
+                                                                                                     "_contributionAmount":  "Required contribution amount in wei",
+                                                                                                     "_contributionFrequency":  "How often members should contribute (in seconds)",
+                                                                                                     "_description":  "Description and purpose",
+                                                                                                     "_name":  "Name of the Chama"
+                                                                                                 }
+                                                                                  },
+                                   "executeLoan(uint256)":  {
+                                                                "params":  {
+                                                                               "_loanId":  "ID of the loan request"
+                                                                           }
+                                                            },
+                                   "joinChama(uint256)":  {
+                                                              "params":  {
+                                                                             "_chamaId":  "ID of the Chama to join"
+                                                                         }
+                                                          },
+                                   "repayLoan(uint256)":  {
+                                                              "params":  {
+                                                                             "_loanId":  "ID of the loan to repay"
+                                                                         }
+                                                          },
+                                   "requestLoan(uint256,uint256,string,uint256)":  {
+                                                                                       "params":  {
+                                                                                                      "_amount":  "Amount to borrow",
+                                                                                                      "_chamaId":  "ID of the Chama",
+                                                                                                      "_purpose":  "Purpose of the loan",
+                                                                                                      "_repaymentPeriod":  "Time to repay (in seconds)"
+                                                                                                  }
+                                                                                   },
+                                   "voteOnLoan(uint256,bool)":  {
+                                                                    "params":  {
+                                                                                   "_loanId":  "ID of the loan request",
+                                                                                   "_support":  "True to approve, false to reject"
+                                                                               }
+                                                                }
+                               },
+                   "title":  "ChamaDAO",
+                   "version":  1
+               },
+    "userdoc":  {
+                    "kind":  "user",
+                    "methods":  {
+                                    "contribute(uint256)":  {
+                                                                "notice":  "Make a contribution to the Chama"
+                                                            },
+                                    "createChama(string,string,uint256,uint256)":  {
+                                                                                       "notice":  "Create a new Chama (savings group)"
+                                                                                   },
+                                    "executeLoan(uint256)":  {
+                                                                 "notice":  "Execute a loan request after voting period"
+                                                             },
+                                    "getChama(uint256)":  {
+                                                              "notice":  "Get Chama details"
+                                                          },
+                                    "getChamaBalance(uint256)":  {
+                                                                     "notice":  "Get Chama treasury balance"
+                                                                 },
+                                    "getChamaMembers(uint256)":  {
+                                                                     "notice":  "Get all members of a Chama"
+                                                                 },
+                                    "getContractBalance()":  {
+                                                                 "notice":  "Get contract balance"
+                                                             },
+                                    "getLoanRequest(uint256)":  {
+                                                                    "notice":  "Get loan request details"
+                                                                },
+                                    "getMember(uint256,address)":  {
+                                                                       "notice":  "Get member details"
+                                                                   },
+                                    "getUserChamas(address)":  {
+                                                                   "notice":  "Get all Chamas a user is part of"
+                                                               },
+                                    "joinChama(uint256)":  {
+                                                               "notice":  "Join an existing Chama"
+                                                           },
+                                    "repayLoan(uint256)":  {
+                                                               "notice":  "Repay a loan"
+                                                           },
+                                    "requestLoan(uint256,uint256,string,uint256)":  {
+                                                                                        "notice":  "Request a loan from the Chama"
+                                                                                    },
+                                    "voteOnLoan(uint256,bool)":  {
+                                                                     "notice":  "Vote on a loan request"
+                                                                 }
+                                },
+                    "notice":  "A decentralized autonomous organization for community savings groups (Chamas)",
+                    "version":  1
+                },
+    "storageLayout":  {
+                          "storage":  [
+                                          {
+                                              "astId":  60,
+                                              "contract":  "contracts/ChamaDAO.sol:ChamaDAO",
+                                              "label":  "chamas",
+                                              "offset":  0,
+                                              "slot":  "0",
+                                              "type":  "t_mapping(t_uint256,t_struct(Chama)21_storage)"
+                                          },
+                                          {
+                                              "astId":  67,
+                                              "contract":  "contracts/ChamaDAO.sol:ChamaDAO",
+                                              "label":  "chamaMembers",
+                                              "offset":  0,
+                                              "slot":  "1",
+                                              "type":  "t_mapping(t_uint256,t_mapping(t_address,t_struct(Member)32_storage))"
+                                          },
+                                          {
+                                              "astId":  72,
+                                              "contract":  "contracts/ChamaDAO.sol:ChamaDAO",
+                                              "label":  "chamaMemberList",
+                                              "offset":  0,
+                                              "slot":  "2",
+                                              "type":  "t_mapping(t_uint256,t_array(t_address)dyn_storage)"
+                                          },
+                                          {
+                                              "astId":  77,
+                                              "contract":  "contracts/ChamaDAO.sol:ChamaDAO",
+                                              "label":  "loanRequests",
+                                              "offset":  0,
+                                              "slot":  "3",
+                                              "type":  "t_mapping(t_uint256,t_struct(LoanRequest)55_storage)"
+                                          },
+                                          {
+                                              "astId":  83,
+                                              "contract":  "contracts/ChamaDAO.sol:ChamaDAO",
+                                              "label":  "hasVoted",
+                                              "offset":  0,
+                                              "slot":  "4",
+                                              "type":  "t_mapping(t_uint256,t_mapping(t_address,t_bool))"
+                                          },
+                                          {
+                                              "astId":  88,
+                                              "contract":  "contracts/ChamaDAO.sol:ChamaDAO",
+                                              "label":  "userChamas",
+                                              "offset":  0,
+                                              "slot":  "5",
+                                              "type":  "t_mapping(t_address,t_array(t_uint256)dyn_storage)"
+                                          },
+                                          {
+                                              "astId":  90,
+                                              "contract":  "contracts/ChamaDAO.sol:ChamaDAO",
+                                              "label":  "chamaCount",
+                                              "offset":  0,
+                                              "slot":  "6",
+                                              "type":  "t_uint256"
+                                          },
+                                          {
+                                              "astId":  92,
+                                              "contract":  "contracts/ChamaDAO.sol:ChamaDAO",
+                                              "label":  "loanRequestCount",
+                                              "offset":  0,
+                                              "slot":  "7",
+                                              "type":  "t_uint256"
+                                          }
+                                      ],
+                          "types":  {
+                                        "t_address":  {
+                                                          "encoding":  "inplace",
+                                                          "label":  "address",
+                                                          "numberOfBytes":  "20"
+                                                      },
+                                        "t_array(t_address)dyn_storage":  {
+                                                                              "base":  "t_address",
+                                                                              "encoding":  "dynamic_array",
+                                                                              "label":  "address[]",
+                                                                              "numberOfBytes":  "32"
+                                                                          },
+                                        "t_array(t_uint256)dyn_storage":  {
+                                                                              "base":  "t_uint256",
+                                                                              "encoding":  "dynamic_array",
+                                                                              "label":  "uint256[]",
+                                                                              "numberOfBytes":  "32"
+                                                                          },
+                                        "t_bool":  {
+                                                       "encoding":  "inplace",
+                                                       "label":  "bool",
+                                                       "numberOfBytes":  "1"
+                                                   },
+                                        "t_mapping(t_address,t_array(t_uint256)dyn_storage)":  {
+                                                                                                   "encoding":  "mapping",
+                                                                                                   "key":  "t_address",
+                                                                                                   "label":  "mapping(address =\u003e uint256[])",
+                                                                                                   "numberOfBytes":  "32",
+                                                                                                   "value":  "t_array(t_uint256)dyn_storage"
+                                                                                               },
+                                        "t_mapping(t_address,t_bool)":  {
+                                                                            "encoding":  "mapping",
+                                                                            "key":  "t_address",
+                                                                            "label":  "mapping(address =\u003e bool)",
+                                                                            "numberOfBytes":  "32",
+                                                                            "value":  "t_bool"
+                                                                        },
+                                        "t_mapping(t_address,t_struct(Member)32_storage)":  {
+                                                                                                "encoding":  "mapping",
+                                                                                                "key":  "t_address",
+                                                                                                "label":  "mapping(address =\u003e struct ChamaDAO.Member)",
+                                                                                                "numberOfBytes":  "32",
+                                                                                                "value":  "t_struct(Member)32_storage"
+                                                                                            },
+                                        "t_mapping(t_uint256,t_array(t_address)dyn_storage)":  {
+                                                                                                   "encoding":  "mapping",
+                                                                                                   "key":  "t_uint256",
+                                                                                                   "label":  "mapping(uint256 =\u003e address[])",
+                                                                                                   "numberOfBytes":  "32",
+                                                                                                   "value":  "t_array(t_address)dyn_storage"
+                                                                                               },
+                                        "t_mapping(t_uint256,t_mapping(t_address,t_bool))":  {
+                                                                                                 "encoding":  "mapping",
+                                                                                                 "key":  "t_uint256",
+                                                                                                 "label":  "mapping(uint256 =\u003e mapping(address =\u003e bool))",
+                                                                                                 "numberOfBytes":  "32",
+                                                                                                 "value":  "t_mapping(t_address,t_bool)"
+                                                                                             },
+                                        "t_mapping(t_uint256,t_mapping(t_address,t_struct(Member)32_storage))":  {
+                                                                                                                     "encoding":  "mapping",
+                                                                                                                     "key":  "t_uint256",
+                                                                                                                     "label":  "mapping(uint256 =\u003e mapping(address =\u003e struct ChamaDAO.Member))",
+                                                                                                                     "numberOfBytes":  "32",
+                                                                                                                     "value":  "t_mapping(t_address,t_struct(Member)32_storage)"
+                                                                                                                 },
+                                        "t_mapping(t_uint256,t_struct(Chama)21_storage)":  {
+                                                                                               "encoding":  "mapping",
+                                                                                               "key":  "t_uint256",
+                                                                                               "label":  "mapping(uint256 =\u003e struct ChamaDAO.Chama)",
+                                                                                               "numberOfBytes":  "32",
+                                                                                               "value":  "t_struct(Chama)21_storage"
+                                                                                           },
+                                        "t_mapping(t_uint256,t_struct(LoanRequest)55_storage)":  {
+                                                                                                     "encoding":  "mapping",
+                                                                                                     "key":  "t_uint256",
+                                                                                                     "label":  "mapping(uint256 =\u003e struct ChamaDAO.LoanRequest)",
+                                                                                                     "numberOfBytes":  "32",
+                                                                                                     "value":  "t_struct(LoanRequest)55_storage"
+                                                                                                 },
+                                        "t_string_storage":  {
+                                                                 "encoding":  "bytes",
+                                                                 "label":  "string",
+                                                                 "numberOfBytes":  "32"
+                                                             },
+                                        "t_struct(Chama)21_storage":  {
+                                                                          "encoding":  "inplace",
+                                                                          "label":  "struct ChamaDAO.Chama",
+                                                                          "members":  [
+                                                                                          {
+                                                                                              "astId":  4,
+                                                                                              "contract":  "contracts/ChamaDAO.sol:ChamaDAO",
+                                                                                              "label":  "name",
+                                                                                              "offset":  0,
+                                                                                              "slot":  "0",
+                                                                                              "type":  "t_string_storage"
+                                                                                          },
+                                                                                          {
+                                                                                              "astId":  6,
+                                                                                              "contract":  "contracts/ChamaDAO.sol:ChamaDAO",
+                                                                                              "label":  "description",
+                                                                                              "offset":  0,
+                                                                                              "slot":  "1",
+                                                                                              "type":  "t_string_storage"
+                                                                                          },
+                                                                                          {
+                                                                                              "astId":  8,
+                                                                                              "contract":  "contracts/ChamaDAO.sol:ChamaDAO",
+                                                                                              "label":  "creator",
+                                                                                              "offset":  0,
+                                                                                              "slot":  "2",
+                                                                                              "type":  "t_address"
+                                                                                          },
+                                                                                          {
+                                                                                              "astId":  10,
+                                                                                              "contract":  "contracts/ChamaDAO.sol:ChamaDAO",
+                                                                                              "label":  "contributionAmount",
+                                                                                              "offset":  0,
+                                                                                              "slot":  "3",
+                                                                                              "type":  "t_uint256"
+                                                                                          },
+                                                                                          {
+                                                                                              "astId":  12,
+                                                                                              "contract":  "contracts/ChamaDAO.sol:ChamaDAO",
+                                                                                              "label":  "contributionFrequency",
+                                                                                              "offset":  0,
+                                                                                              "slot":  "4",
+                                                                                              "type":  "t_uint256"
+                                                                                          },
+                                                                                          {
+                                                                                              "astId":  14,
+                                                                                              "contract":  "contracts/ChamaDAO.sol:ChamaDAO",
+                                                                                              "label":  "createdAt",
+                                                                                              "offset":  0,
+                                                                                              "slot":  "5",
+                                                                                              "type":  "t_uint256"
+                                                                                          },
+                                                                                          {
+                                                                                              "astId":  16,
+                                                                                              "contract":  "contracts/ChamaDAO.sol:ChamaDAO",
+                                                                                              "label":  "totalContributions",
+                                                                                              "offset":  0,
+                                                                                              "slot":  "6",
+                                                                                              "type":  "t_uint256"
+                                                                                          },
+                                                                                          {
+                                                                                              "astId":  18,
+                                                                                              "contract":  "contracts/ChamaDAO.sol:ChamaDAO",
+                                                                                              "label":  "memberCount",
+                                                                                              "offset":  0,
+                                                                                              "slot":  "7",
+                                                                                              "type":  "t_uint256"
+                                                                                          },
+                                                                                          {
+                                                                                              "astId":  20,
+                                                                                              "contract":  "contracts/ChamaDAO.sol:ChamaDAO",
+                                                                                              "label":  "isActive",
+                                                                                              "offset":  0,
+                                                                                              "slot":  "8",
+                                                                                              "type":  "t_bool"
+                                                                                          }
+                                                                                      ],
+                                                                          "numberOfBytes":  "288"
+                                                                      },
+                                        "t_struct(LoanRequest)55_storage":  {
+                                                                                "encoding":  "inplace",
+                                                                                "label":  "struct ChamaDAO.LoanRequest",
+                                                                                "members":  [
+                                                                                                {
+                                                                                                    "astId":  34,
+                                                                                                    "contract":  "contracts/ChamaDAO.sol:ChamaDAO",
+                                                                                                    "label":  "chamaId",
+                                                                                                    "offset":  0,
+                                                                                                    "slot":  "0",
+                                                                                                    "type":  "t_uint256"
+                                                                                                },
+                                                                                                {
+                                                                                                    "astId":  36,
+                                                                                                    "contract":  "contracts/ChamaDAO.sol:ChamaDAO",
+                                                                                                    "label":  "borrower",
+                                                                                                    "offset":  0,
+                                                                                                    "slot":  "1",
+                                                                                                    "type":  "t_address"
+                                                                                                },
+                                                                                                {
+                                                                                                    "astId":  38,
+                                                                                                    "contract":  "contracts/ChamaDAO.sol:ChamaDAO",
+                                                                                                    "label":  "amount",
+                                                                                                    "offset":  0,
+                                                                                                    "slot":  "2",
+                                                                                                    "type":  "t_uint256"
+                                                                                                },
+                                                                                                {
+                                                                                                    "astId":  40,
+                                                                                                    "contract":  "contracts/ChamaDAO.sol:ChamaDAO",
+                                                                                                    "label":  "purpose",
+                                                                                                    "offset":  0,
+                                                                                                    "slot":  "3",
+                                                                                                    "type":  "t_string_storage"
+                                                                                                },
+                                                                                                {
+                                                                                                    "astId":  42,
+                                                                                                    "contract":  "contracts/ChamaDAO.sol:ChamaDAO",
+                                                                                                    "label":  "repaymentPeriod",
+                                                                                                    "offset":  0,
+                                                                                                    "slot":  "4",
+                                                                                                    "type":  "t_uint256"
+                                                                                                },
+                                                                                                {
+                                                                                                    "astId":  44,
+                                                                                                    "contract":  "contracts/ChamaDAO.sol:ChamaDAO",
+                                                                                                    "label":  "votesFor",
+                                                                                                    "offset":  0,
+                                                                                                    "slot":  "5",
+                                                                                                    "type":  "t_uint256"
+                                                                                                },
+                                                                                                {
+                                                                                                    "astId":  46,
+                                                                                                    "contract":  "contracts/ChamaDAO.sol:ChamaDAO",
+                                                                                                    "label":  "votesAgainst",
+                                                                                                    "offset":  0,
+                                                                                                    "slot":  "6",
+                                                                                                    "type":  "t_uint256"
+                                                                                                },
+                                                                                                {
+                                                                                                    "astId":  48,
+                                                                                                    "contract":  "contracts/ChamaDAO.sol:ChamaDAO",
+                                                                                                    "label":  "createdAt",
+                                                                                                    "offset":  0,
+                                                                                                    "slot":  "7",
+                                                                                                    "type":  "t_uint256"
+                                                                                                },
+                                                                                                {
+                                                                                                    "astId":  50,
+                                                                                                    "contract":  "contracts/ChamaDAO.sol:ChamaDAO",
+                                                                                                    "label":  "deadline",
+                                                                                                    "offset":  0,
+                                                                                                    "slot":  "8",
+                                                                                                    "type":  "t_uint256"
+                                                                                                },
+                                                                                                {
+                                                                                                    "astId":  52,
+                                                                                                    "contract":  "contracts/ChamaDAO.sol:ChamaDAO",
+                                                                                                    "label":  "executed",
+                                                                                                    "offset":  0,
+                                                                                                    "slot":  "9",
+                                                                                                    "type":  "t_bool"
+                                                                                                },
+                                                                                                {
+                                                                                                    "astId":  54,
+                                                                                                    "contract":  "contracts/ChamaDAO.sol:ChamaDAO",
+                                                                                                    "label":  "approved",
+                                                                                                    "offset":  1,
+                                                                                                    "slot":  "9",
+                                                                                                    "type":  "t_bool"
+                                                                                                }
+                                                                                            ],
+                                                                                "numberOfBytes":  "320"
+                                                                            },
+                                        "t_struct(Member)32_storage":  {
+                                                                           "encoding":  "inplace",
+                                                                           "label":  "struct ChamaDAO.Member",
+                                                                           "members":  [
+                                                                                           {
+                                                                                               "astId":  23,
+                                                                                               "contract":  "contracts/ChamaDAO.sol:ChamaDAO",
+                                                                                               "label":  "memberAddress",
+                                                                                               "offset":  0,
+                                                                                               "slot":  "0",
+                                                                                               "type":  "t_address"
+                                                                                           },
+                                                                                           {
+                                                                                               "astId":  25,
+                                                                                               "contract":  "contracts/ChamaDAO.sol:ChamaDAO",
+                                                                                               "label":  "totalContributed",
+                                                                                               "offset":  0,
+                                                                                               "slot":  "1",
+                                                                                               "type":  "t_uint256"
+                                                                                           },
+                                                                                           {
+                                                                                               "astId":  27,
+                                                                                               "contract":  "contracts/ChamaDAO.sol:ChamaDAO",
+                                                                                               "label":  "lastContributionTime",
+                                                                                               "offset":  0,
+                                                                                               "slot":  "2",
+                                                                                               "type":  "t_uint256"
+                                                                                           },
+                                                                                           {
+                                                                                               "astId":  29,
+                                                                                               "contract":  "contracts/ChamaDAO.sol:ChamaDAO",
+                                                                                               "label":  "joinedAt",
+                                                                                               "offset":  0,
+                                                                                               "slot":  "3",
+                                                                                               "type":  "t_uint256"
+                                                                                           },
+                                                                                           {
+                                                                                               "astId":  31,
+                                                                                               "contract":  "contracts/ChamaDAO.sol:ChamaDAO",
+                                                                                               "label":  "isActive",
+                                                                                               "offset":  0,
+                                                                                               "slot":  "4",
+                                                                                               "type":  "t_bool"
+                                                                                           }
+                                                                                       ],
+                                                                           "numberOfBytes":  "160"
+                                                                       },
+                                        "t_uint256":  {
+                                                          "encoding":  "inplace",
+                                                          "label":  "uint256",
+                                                          "numberOfBytes":  "32"
+                                                      }
+                                    }
+                      }
+}

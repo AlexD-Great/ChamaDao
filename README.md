@@ -10,7 +10,7 @@
 
 <p><strong>🏆 ETH Safari 2025 Hackathon Submission</strong></p>
 
-[Live Demo](#) • [Video Demo](#) • [Documentation](#-documentation)
+[Live Demo](https://chama-dao-nextjs.vercel.app/) • [Video Demo](#) • [Contract](https://sepolia.etherscan.io/address/0xCD41309879BfB57c1b2b19D58b47B190C7387c54)
 
 </div>
 
@@ -123,6 +123,18 @@ Visit **http://localhost:3000** to see the app!
 
 2. Import a test account (has 10,000 ETH):
    - Private Key: `0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80`
+
+---
+
+## 🌐 Live Deployment
+
+### Frontend
+**URL:** https://chama-dao-nextjs.vercel.app/
+
+### Smart Contract (Sepolia Testnet)
+**Address:** `0xCD41309879BfB57c1b2b19D58b47B190C7387c54`  
+**Explorer:** https://sepolia.etherscan.io/address/0xCD41309879BfB57c1b2b19D58b47B190C7387c54  
+**Network:** Sepolia Testnet (Chain ID: 11155111)
 
 ---
 

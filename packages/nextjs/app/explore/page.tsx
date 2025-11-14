@@ -1,57 +1,94 @@
 "use client";
 
-import { useState } from "react";
-import { Search, Users, TrendingUp, Calendar, ArrowRight } from "lucide-react";
+import { useState, useMemo } from "react";
+import { Search, Users, TrendingUp, Calendar, Plus, Loader2 } from "lucide-react";
 import Link from "next/link";
+import { useTotalChamas, useChamaDetails } from "../../hooks/useChamaDAO";
+import { formatEther } from "viem";
 
-// Mock data - will be replaced with contract data
-const mockChamas = [
-  {
-    id: 1,
-    name: "Village Savings Group",
-    description: "Community savings for local development projects",
-    members: 12,
-    totalContributions: "2.5",
-    contributionAmount: "0.1",
-    frequency: "Monthly",
-  },
-  {
-    id: 2,
-    name: "Women Empowerment Chama",
-    description: "Supporting women entrepreneurs in our community",
-    members: 8,
-    totalContributions: "1.8",
-    contributionAmount: "0.05",
-    frequency: "Weekly",
-  },
-  {
-    id: 3,
-    name: "Youth Business Fund",
-    description: "Helping young entrepreneurs start their businesses",
-    members: 15,
-    totalContributions: "3.2",
-    contributionAmount: "0.08",
-    frequency: "Bi-weekly",
-  },
-  {
-    id: 4,
-    name: "Education Fund",
-    description: "Pooling resources for children's education",
-    members: 20,
-    totalContributions: "5.0",
-    contributionAmount: "0.15",
-    frequency: "Monthly",
-  },
-];
+// Component to display a single Chama card
+function ChamaCard({ chamaId }: { chamaId: number }) {
+  const { data: chamaData, isLoading } = useChamaDetails(chamaId);
+
+  if (isLoading) {
+    return (
+      <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
+        <div className="flex items-center justify-center h-40">
+          <Loader2 className="h-8 w-8 animate-spin text-primary-600" />
+        </div>
+      </div>
+    );
+  }
+
+  if (!chamaData) return null;
+
+  const [name, description, creator, contributionAmount, contributionFrequency, totalContributions, memberCount, isActive] = chamaData as any[];
+
+  if (!isActive) return null;
+
+  const frequencyMap: Record<number, string> = {
+    7: "Weekly",
+    14: "Bi-weekly",
+    30: "Monthly",
+    90: "Quarterly",
+  };
+
+  return (
+    <Link
+      href={`/chama/${chamaId}`}
+      className="group rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition-all hover:border-primary-300 hover:shadow-lg"
+    >
+      <div className="mb-4">
+        <h3 className="text-xl font-bold text-gray-900 group-hover:text-primary-600 mb-2">
+          {name}
+        </h3>
+        <p className="text-sm text-gray-600 line-clamp-2">{description}</p>
+      </div>
+
+      <div className="grid grid-cols-2 gap-4 mb-4">
+        <div className="flex items-center gap-2">
+          <Users className="h-4 w-4 text-primary-600" />
+          <span className="text-sm text-gray-700">
+            {memberCount?.toString() || "0"} Members
+          </span>
+        </div>
+        <div className="flex items-center gap-2">
+          <TrendingUp className="h-4 w-4 text-secondary-600" />
+          <span className="text-sm text-gray-700">
+            {formatEther(totalContributions || BigInt(0))} ETH
+          </span>
+        </div>
+        <div className="flex items-center gap-2">
+          <Calendar className="h-4 w-4 text-primary-600" />
+          <span className="text-sm text-gray-700">
+            {frequencyMap[Number(contributionFrequency)] || "Monthly"}
+          </span>
+        </div>
+        <div className="flex items-center gap-2">
+          <span className="text-sm font-semibold text-gray-900">
+            {formatEther(contributionAmount || BigInt(0))} ETH/period
+          </span>
+        </div>
+      </div>
+
+      <div className="pt-4 border-t border-gray-100">
+        <span className="text-sm text-primary-600 font-medium group-hover:underline">
+          View Details →
+        </span>
+      </div>
+    </Link>
+  );
+}
 
 export default function ExplorePage() {
   const [searchQuery, setSearchQuery] = useState("");
+  const { data: totalChamas, isLoading: isLoadingTotal } = useTotalChamas();
 
-  const filteredChamas = mockChamas.filter(
-    (chama) =>
-      chama.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      chama.description.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  const chamaIds = useMemo(() => {
+    if (!totalChamas) return [];
+    const count = Number(totalChamas);
+    return Array.from({ length: count }, (_, i) => i);
+  }, [totalChamas]);
 
   return (
     <div className="container mx-auto px-4 py-12">
@@ -79,88 +116,59 @@ export default function ExplorePage() {
       </div>
 
       {/* Stats */}
-      <div className="mb-8 grid gap-4 md:grid-cols-3">
-        <StatCard
-          label="Total Chamas"
-          value={mockChamas.length.toString()}
-          icon={<Users className="h-6 w-6 text-primary-600" />}
-        />
-        <StatCard
-          label="Total Members"
-          value={mockChamas.reduce((sum, c) => sum + c.members, 0).toString()}
-          icon={<Users className="h-6 w-6 text-secondary-600" />}
-        />
-        <StatCard
-          label="Total Saved"
-          value={`${mockChamas.reduce((sum, c) => sum + parseFloat(c.totalContributions), 0).toFixed(2)} ETH`}
-          icon={<TrendingUp className="h-6 w-6 text-primary-600" />}
-        />
+      <div className="grid gap-6 md:grid-cols-3 mb-8">
+        <div className="rounded-lg border border-gray-200 bg-white p-6">
+          <p className="text-sm text-gray-600 mb-1">Total Chamas</p>
+          <p className="text-3xl font-bold text-gray-900">
+            {isLoadingTotal ? (
+              <Loader2 className="h-8 w-8 animate-spin text-primary-600" />
+            ) : (
+              totalChamas?.toString() || "0"
+            )}
+          </p>
+        </div>
+        <div className="rounded-lg border border-gray-200 bg-white p-6">
+          <p className="text-sm text-gray-600 mb-1">Active Network</p>
+          <p className="text-2xl font-bold text-gray-900">Sepolia</p>
+        </div>
+        <div className="rounded-lg border border-gray-200 bg-white p-6">
+          <p className="text-sm text-gray-600 mb-1">Contract</p>
+          <a
+            href="https://sepolia.etherscan.io/address/0xCD41309879BfB57c1b2b19D58b47B190C7387c54"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm font-mono text-primary-600 hover:underline"
+          >
+            0xCD41...7c54
+          </a>
+        </div>
       </div>
 
       {/* Chamas Grid */}
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {filteredChamas.map((chama) => (
-          <ChamaCard key={chama.id} chama={chama} />
-        ))}
-      </div>
-
-      {filteredChamas.length === 0 && (
-        <div className="py-12 text-center">
-          <p className="text-gray-500">No Chamas found matching your search.</p>
+      {isLoadingTotal ? (
+        <div className="flex items-center justify-center py-20">
+          <Loader2 className="h-12 w-12 animate-spin text-primary-600" />
+        </div>
+      ) : chamaIds.length > 0 ? (
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {chamaIds.map((id) => (
+            <ChamaCard key={id} chamaId={id} />
+          ))}
+        </div>
+      ) : (
+        <div className="text-center py-12">
+          <Search className="mx-auto h-12 w-12 text-gray-400 mb-4" />
+          <h3 className="text-lg font-semibold text-gray-900 mb-2">No Chamas Yet</h3>
+          <p className="text-gray-600 mb-6">Be the first to create a Chama on the blockchain!</p>
+          <Link
+            href="/create"
+            className="inline-flex items-center gap-2 rounded-lg bg-primary-600 px-6 py-3 text-white hover:bg-primary-700"
+          >
+            <Plus className="h-5 w-5" />
+            Create First Chama
+          </Link>
         </div>
       )}
-    </div>
-  );
-}
-
-function StatCard({ label, value, icon }: { label: string; value: string; icon: React.ReactNode }) {
-  return (
-    <div className="rounded-lg border border-gray-200 bg-white p-6 shadow-sm">
-      <div className="flex items-center justify-between">
-        <div>
-          <p className="text-sm text-gray-600">{label}</p>
-          <p className="text-2xl font-bold text-gray-900">{value}</p>
-        </div>
-        {icon}
-      </div>
-    </div>
-  );
-}
-
-function ChamaCard({ chama }: { chama: typeof mockChamas[0] }) {
-  return (
-    <div className="group rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition-all hover:shadow-lg">
-      <div className="mb-4">
-        <h3 className="text-xl font-semibold text-gray-900 mb-2">
-          {chama.name}
-        </h3>
-        <p className="text-sm text-gray-600 line-clamp-2">
-          {chama.description}
-        </p>
-      </div>
-
-      <div className="mb-4 space-y-2">
-        <div className="flex items-center gap-2 text-sm text-gray-600">
-          <Users className="h-4 w-4" />
-          <span>{chama.members} members</span>
-        </div>
-        <div className="flex items-center gap-2 text-sm text-gray-600">
-          <TrendingUp className="h-4 w-4" />
-          <span>{chama.totalContributions} ETH saved</span>
-        </div>
-        <div className="flex items-center gap-2 text-sm text-gray-600">
-          <Calendar className="h-4 w-4" />
-          <span>{chama.contributionAmount} ETH • {chama.frequency}</span>
-        </div>
-      </div>
-
-      <Link
-        href={`/chama/${chama.id}`}
-        className="flex items-center justify-center gap-2 rounded-lg bg-primary-600 px-4 py-2 text-sm font-semibold text-white transition-all hover:bg-primary-700 group-hover:shadow-md"
-      >
-        View Details
-        <ArrowRight className="h-4 w-4" />
-      </Link>
     </div>
   );
 }

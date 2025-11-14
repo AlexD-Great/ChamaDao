@@ -1,12 +1,17 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useAccount } from "wagmi";
-import { HandCoins, Users, Calendar, DollarSign } from "lucide-react";
+import { HandCoins, Users, Calendar, DollarSign, CheckCircle, Loader2 } from "lucide-react";
 import Link from "next/link";
+import { useCreateChama } from "../../hooks/useChamaDAO";
+import { useRouter } from "next/navigation";
 
 export default function CreateChamaPage() {
+  const router = useRouter();
   const { address, isConnected } = useAccount();
+  const { createChama, isPending, isConfirming, isSuccess, error, hash } = useCreateChama();
+  
   const [formData, setFormData] = useState({
     name: "",
     description: "",
@@ -14,11 +19,32 @@ export default function CreateChamaPage() {
     contributionFrequency: "30", // days
   });
 
+  useEffect(() => {
+    if (isSuccess) {
+      setTimeout(() => {
+        router.push("/my-chamas");
+      }, 3000);
+    }
+  }, [isSuccess, router]);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO: Call smart contract createChama function
-    console.log("Creating Chama:", formData);
-    alert("Chama creation will be implemented with contract integration!");
+    
+    if (!formData.name || !formData.description || !formData.contributionAmount) {
+      alert("Please fill in all fields");
+      return;
+    }
+
+    try {
+      createChama(
+        formData.name,
+        formData.description,
+        formData.contributionAmount,
+        parseInt(formData.contributionFrequency)
+      );
+    } catch (err) {
+      console.error("Error creating Chama:", err);
+    }
   };
 
   if (!isConnected) {
@@ -140,13 +166,55 @@ export default function CreateChamaPage() {
             </ul>
           </div>
 
+          {/* Success Message */}
+          {isSuccess && (
+            <div className="rounded-lg bg-green-50 border border-green-200 p-4 flex items-center gap-3">
+              <CheckCircle className="h-6 w-6 text-green-600" />
+              <div>
+                <p className="font-semibold text-green-900">Chama Created Successfully!</p>
+                <p className="text-sm text-green-700">Redirecting to your dashboard...</p>
+                {hash && (
+                  <a
+                    href={`https://sepolia.etherscan.io/tx/${hash}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm text-green-600 hover:underline"
+                  >
+                    View transaction
+                  </a>
+                )}
+              </div>
+            </div>
+          )}
+
+          {/* Error Message */}
+          {error && (
+            <div className="rounded-lg bg-red-50 border border-red-200 p-4">
+              <p className="font-semibold text-red-900">Error Creating Chama</p>
+              <p className="text-sm text-red-700">{error.message}</p>
+            </div>
+          )}
+
           {/* Submit Button */}
           <div className="flex gap-4">
             <button
               type="submit"
-              className="flex-1 rounded-lg bg-primary-600 px-6 py-4 text-lg font-semibold text-white shadow-lg transition-all hover:bg-primary-700 hover:shadow-xl"
+              disabled={isPending || isConfirming || isSuccess}
+              className="flex-1 rounded-lg bg-primary-600 px-6 py-4 text-lg font-semibold text-white shadow-lg transition-all hover:bg-primary-700 hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
             >
-              Create Chama
+              {isPending || isConfirming ? (
+                <>
+                  <Loader2 className="h-5 w-5 animate-spin" />
+                  {isPending ? "Confirm in Wallet..." : "Creating Chama..."}
+                </>
+              ) : isSuccess ? (
+                <>
+                  <CheckCircle className="h-5 w-5" />
+                  Created!
+                </>
+              ) : (
+                "Create Chama"
+              )}
             </button>
             <Link
               href="/"

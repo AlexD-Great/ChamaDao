@@ -1,0 +1,41 @@
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background Circle -->
+  <circle cx="100" cy="100" r="95" fill="#F97316" opacity="0.1"/>
+  
+  <!-- Outer Ring -->
+  <circle cx="100" cy="100" r="85" stroke="#F97316" stroke-width="3" fill="none"/>
+  
+  <!-- Three People Forming Circle -->
+  <!-- Person 1 (Top) -->
+  <g transform="translate(100, 40)">
+    <circle cx="0" cy="0" r="12" fill="#15803D"/>
+    <path d="M -15 25 Q -15 12 0 12 Q 15 12 15 25 L 10 35 L -10 35 Z" fill="#15803D"/>
+  </g>
+  
+  <!-- Person 2 (Bottom Left) -->
+  <g transform="translate(55, 140)">
+    <circle cx="0" cy="0" r="12" fill="#15803D"/>
+    <path d="M -15 25 Q -15 12 0 12 Q 15 12 15 25 L 10 35 L -10 35 Z" fill="#15803D"/>
+  </g>
+  
+  <!-- Person 3 (Bottom Right) -->
+  <g transform="translate(145, 140)">
+    <circle cx="0" cy="0" r="12" fill="#15803D"/>
+    <path d="M -15 25 Q -15 12 0 12 Q 15 12 15 25 L 10 35 L -10 35 Z" fill="#15803D"/>
+  </g>
+  
+  <!-- Central Calabash/Bowl (Community Pot) -->
+  <ellipse cx="100" cy="95" rx="25" ry="8" fill="#F97316" opacity="0.3"/>
+  <path d="M 75 95 Q 75 110 85 120 L 115 120 Q 125 110 125 95 Z" fill="#F97316"/>
+  <ellipse cx="100" cy="95" rx="25" ry="8" fill="#F97316"/>
+  
+  <!-- Coins/Contributions -->
+  <circle cx="100" cy="90" r="6" fill="#FCD34D" stroke="#F59E0B" stroke-width="1.5"/>
+  <circle cx="90" cy="92" r="5" fill="#FCD34D" stroke="#F59E0B" stroke-width="1.5" opacity="0.8"/>
+  <circle cx="110" cy="92" r="5" fill="#FCD34D" stroke="#F59E0B" stroke-width="1.5" opacity="0.8"/>
+  
+  <!-- Connecting Lines (Unity) -->
+  <path d="M 100 52 L 100 70" stroke="#15803D" stroke-width="2" opacity="0.4"/>
+  <path d="M 67 152 L 82 115" stroke="#15803D" stroke-width="2" opacity="0.4"/>
+  <path d="M 133 152 L 118 115" stroke="#15803D" stroke-width="2" opacity="0.4"/>
+</svg>

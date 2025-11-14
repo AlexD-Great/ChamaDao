@@ -8,6 +8,9 @@ export function useTotalChamas() {
     address: CHAMA_DAO_ADDRESS,
     abi: CHAMA_DAO_ABI,
     functionName: "chamaCounter",
+    query: {
+      refetchInterval: 5000, // Refetch every 5 seconds
+    },
   });
 }
 
@@ -18,6 +21,9 @@ export function useChamaDetails(chamaId: number) {
     abi: CHAMA_DAO_ABI,
     functionName: "chamas",
     args: [BigInt(chamaId)],
+    query: {
+      refetchInterval: 5000, // Refetch every 5 seconds
+    },
   });
 }
 
@@ -43,6 +49,7 @@ export function useMemberDetails(chamaId: number, userAddress: `0x${string}` | u
     args: userAddress ? [BigInt(chamaId), userAddress] : undefined,
     query: {
       enabled: !!userAddress,
+      refetchInterval: 5000, // Refetch every 5 seconds
     },
   });
 }

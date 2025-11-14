@@ -5,7 +5,10 @@ import { HandCoins, Plus, TrendingUp, Users, Calendar, ArrowRight, Loader2 } fro
 import Link from "next/link";
 import { useTotalChamas, useChamaDetails, useIsMember, useMemberDetails, useContribute } from "../../hooks/useChamaDAO";
 import { formatEther } from "viem";
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
+
+// Force dynamic rendering
+export const dynamic = 'force-dynamic';
 
 // Component to display a single user's Chama
 function UserChamaCard({ chamaId, userAddress }: { chamaId: number; userAddress: `0x${string}` }) {

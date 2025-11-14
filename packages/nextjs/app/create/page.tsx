@@ -22,10 +22,11 @@ export default function CreateChamaPage() {
   useEffect(() => {
     if (isSuccess) {
       setTimeout(() => {
-        router.push("/my-chamas");
+        // Force a full page reload to ensure fresh data
+        window.location.href = "/my-chamas";
       }, 3000);
     }
-  }, [isSuccess, router]);
+  }, [isSuccess]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

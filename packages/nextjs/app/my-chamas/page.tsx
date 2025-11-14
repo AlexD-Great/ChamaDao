@@ -1,37 +1,106 @@
 "use client";
 
 import { useAccount } from "wagmi";
-import { HandCoins, Plus, TrendingUp, Users, Calendar, ArrowRight } from "lucide-react";
+import { HandCoins, Plus, TrendingUp, Users, Calendar, ArrowRight, Loader2 } from "lucide-react";
 import Link from "next/link";
+import { useTotalChamas, useChamaDetails, useIsMember, useMemberDetails } from "../../hooks/useChamaDAO";
+import { formatEther } from "viem";
+import { useMemo } from "react";
 
-// Mock data - will be replaced with contract data
-const mockUserChamas = [
-  {
-    id: 1,
-    name: "Village Savings Group",
-    role: "Creator",
-    members: 12,
-    myContributions: "0.8",
-    totalContributions: "2.5",
-    contributionAmount: "0.1",
-    frequency: "Monthly",
-    nextContribution: "5 days",
-  },
-  {
-    id: 2,
-    name: "Women Empowerment Chama",
-    role: "Member",
-    members: 8,
-    myContributions: "0.3",
-    totalContributions: "1.8",
-    contributionAmount: "0.05",
-    frequency: "Weekly",
-    nextContribution: "2 days",
-  },
-];
+// Component to display a single user's Chama
+function UserChamaCard({ chamaId, userAddress }: { chamaId: number; userAddress: `0x${string}` }) {
+  const { data: chamaData, isLoading: loadingChama } = useChamaDetails(chamaId);
+  const { data: isMember } = useIsMember(chamaId, userAddress);
+  const { data: memberData, isLoading: loadingMember } = useMemberDetails(chamaId, userAddress);
+
+  if (loadingChama || loadingMember) {
+    return (
+      <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
+        <div className="flex items-center justify-center h-40">
+          <Loader2 className="h-8 w-8 animate-spin text-primary-600" />
+        </div>
+      </div>
+    );
+  }
+
+  if (!chamaData || !isMember) return null;
+
+  const [name, description, creator, contributionAmount, contributionFrequency, totalContributions, memberCount, isActive] = chamaData as any[];
+  const [hasJoined, contributions, , lastContribution] = memberData || [false, BigInt(0), BigInt(0), BigInt(0)];
+
+  if (!isActive || !hasJoined) return null;
+
+  const frequencyMap: Record<number, string> = {
+    7: "Weekly",
+    14: "Bi-weekly",
+    30: "Monthly",
+    90: "Quarterly",
+  };
+
+  const isCreator = creator?.toLowerCase() === userAddress?.toLowerCase();
+
+  return (
+    <Link
+      href={`/chama/${chamaId}`}
+      className="group rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition-all hover:border-primary-300 hover:shadow-lg"
+    >
+      <div className="mb-4 flex items-start justify-between">
+        <div>
+          <h3 className="text-xl font-bold text-gray-900 group-hover:text-primary-600 mb-1">
+            {name}
+          </h3>
+          <span className="inline-flex items-center rounded-full bg-primary-100 px-2.5 py-0.5 text-xs font-medium text-primary-800">
+            {isCreator ? "Creator" : "Member"}
+          </span>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-2 gap-4 mb-4">
+        <div>
+          <p className="text-sm text-gray-600">My Contributions</p>
+          <p className="text-lg font-semibold text-gray-900">
+            {formatEther(contributions || BigInt(0))} ETH
+          </p>
+        </div>
+        <div>
+          <p className="text-sm text-gray-600">Total Pool</p>
+          <p className="text-lg font-semibold text-gray-900">
+            {formatEther(totalContributions || BigInt(0))} ETH
+          </p>
+        </div>
+        <div>
+          <p className="text-sm text-gray-600">Members</p>
+          <p className="text-lg font-semibold text-gray-900">
+            {memberCount?.toString() || "0"}
+          </p>
+        </div>
+        <div>
+          <p className="text-sm text-gray-600">Frequency</p>
+          <p className="text-lg font-semibold text-gray-900">
+            {frequencyMap[Number(contributionFrequency)] || "Monthly"}
+          </p>
+        </div>
+      </div>
+
+      <div className="pt-4 border-t border-gray-100 flex items-center justify-between">
+        <span className="text-sm text-gray-600">
+          {formatEther(contributionAmount || BigInt(0))} ETH per period
+        </span>
+        <ArrowRight className="h-5 w-5 text-primary-600 group-hover:translate-x-1 transition-transform" />
+      </div>
+    </Link>
+  );
+}
 
 export default function MyChamasPage() {
   const { address, isConnected } = useAccount();
+  const { data: totalChamas, isLoading: loadingTotal } = useTotalChamas();
+
+  const chamaIds = useMemo(() => {
+    if (!totalChamas) return [];
+    const count = Number(totalChamas);
+    return Array.from({ length: count }, (_, i) => i);
+  }, [totalChamas]);
 
   if (!isConnected) {
     return (
@@ -78,33 +147,40 @@ export default function MyChamasPage() {
       {/* Overview Stats */}
       <div className="mb-8 grid gap-4 md:grid-cols-4">
         <StatCard
-          label="Total Chamas"
-          value={mockUserChamas.length.toString()}
+          label="Network"
+          value="Sepolia"
           icon={<HandCoins className="h-6 w-6 text-primary-600" />}
         />
         <StatCard
-          label="My Contributions"
-          value={`${mockUserChamas.reduce((sum, c) => sum + parseFloat(c.myContributions), 0).toFixed(2)} ETH`}
+          label="Total Chamas"
+          value={loadingTotal ? "..." : (totalChamas?.toString() || "0")}
           icon={<TrendingUp className="h-6 w-6 text-secondary-600" />}
         />
         <StatCard
-          label="Total Saved"
-          value={`${mockUserChamas.reduce((sum, c) => sum + parseFloat(c.totalContributions), 0).toFixed(2)} ETH`}
-          icon={<TrendingUp className="h-6 w-6 text-primary-600" />}
+          label="Your Wallet"
+          value={`${address?.slice(0, 6)}...${address?.slice(-4)}`}
+          icon={<Users className="h-6 w-6 text-primary-600" />}
         />
         <StatCard
-          label="Active Groups"
-          value={mockUserChamas.length.toString()}
+          label="Status"
+          value="Connected"
           icon={<Users className="h-6 w-6 text-secondary-600" />}
         />
       </div>
 
       {/* Chamas List */}
-      {mockUserChamas.length > 0 ? (
-        <div className="space-y-4">
-          {mockUserChamas.map((chama) => (
-            <ChamaCard key={chama.id} chama={chama} />
-          ))}
+      {loadingTotal ? (
+        <div className="flex items-center justify-center py-20">
+          <Loader2 className="h-12 w-12 animate-spin text-primary-600" />
+        </div>
+      ) : chamaIds.length > 0 ? (
+        <div>
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">Your Chamas</h2>
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {chamaIds.map((id) => address && (
+              <UserChamaCard key={id} chamaId={id} userAddress={address} />
+            ))}
+          </div>
         </div>
       ) : (
         <div className="rounded-xl border-2 border-dashed border-gray-300 bg-gray-50 p-12 text-center">
@@ -152,57 +228,6 @@ function StatCard({ label, value, icon }: { label: string; value: string; icon: 
       </div>
       <p className="text-sm text-gray-600 mb-1">{label}</p>
       <p className="text-2xl font-bold text-gray-900">{value}</p>
-    </div>
-  );
-}
-
-function ChamaCard({ chama }: { chama: typeof mockUserChamas[0] }) {
-  return (
-    <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition-all hover:shadow-md">
-      <div className="flex items-start justify-between mb-4">
-        <div>
-          <div className="flex items-center gap-2 mb-2">
-            <h3 className="text-xl font-semibold text-gray-900">
-              {chama.name}
-            </h3>
-            <span className="rounded-full bg-primary-100 px-3 py-1 text-xs font-medium text-primary-700">
-              {chama.role}
-            </span>
-          </div>
-          <div className="flex items-center gap-4 text-sm text-gray-600">
-            <span className="flex items-center gap-1">
-              <Users className="h-4 w-4" />
-              {chama.members} members
-            </span>
-            <span className="flex items-center gap-1">
-              <Calendar className="h-4 w-4" />
-              {chama.frequency}
-            </span>
-          </div>
-        </div>
-        <Link
-          href={`/chama/${chama.id}`}
-          className="flex items-center gap-2 rounded-lg bg-primary-600 px-4 py-2 text-sm font-semibold text-white transition-all hover:bg-primary-700"
-        >
-          View
-          <ArrowRight className="h-4 w-4" />
-        </Link>
-      </div>
-
-      <div className="grid grid-cols-3 gap-4 rounded-lg bg-gray-50 p-4">
-        <div>
-          <p className="text-xs text-gray-600 mb-1">My Contributions</p>
-          <p className="text-lg font-semibold text-gray-900">{chama.myContributions} ETH</p>
-        </div>
-        <div>
-          <p className="text-xs text-gray-600 mb-1">Total Saved</p>
-          <p className="text-lg font-semibold text-gray-900">{chama.totalContributions} ETH</p>
-        </div>
-        <div>
-          <p className="text-xs text-gray-600 mb-1">Next Due</p>
-          <p className="text-lg font-semibold text-gray-900">{chama.nextContribution}</p>
-        </div>
-      </div>
     </div>
   );
 }

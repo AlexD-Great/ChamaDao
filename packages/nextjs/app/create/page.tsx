@@ -93,7 +93,7 @@ export default function CreateChamaPage() {
               required
               value={formData.name}
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-              className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500"
+              className="w-full rounded-lg border border-gray-300 px-4 py-3 text-gray-900 bg-white focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500"
               placeholder="e.g., Village Savings Group"
             />
           </div>
@@ -109,7 +109,7 @@ export default function CreateChamaPage() {
               value={formData.description}
               onChange={(e) => setFormData({ ...formData, description: e.target.value })}
               rows={4}
-              className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500"
+              className="w-full rounded-lg border border-gray-300 px-4 py-3 text-gray-900 bg-white focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500"
               placeholder="Describe the purpose of your Chama..."
             />
           </div>
@@ -127,7 +127,7 @@ export default function CreateChamaPage() {
               required
               value={formData.contributionAmount}
               onChange={(e) => setFormData({ ...formData, contributionAmount: e.target.value })}
-              className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500"
+              className="w-full rounded-lg border border-gray-300 px-4 py-3 text-gray-900 bg-white focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500"
               placeholder="0.01"
             />
             <p className="mt-2 text-sm text-gray-500">
@@ -144,7 +144,7 @@ export default function CreateChamaPage() {
             <select
               value={formData.contributionFrequency}
               onChange={(e) => setFormData({ ...formData, contributionFrequency: e.target.value })}
-              className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500"
+              className="w-full rounded-lg border border-gray-300 px-4 py-3 text-gray-900 bg-white focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500"
             >
               <option value="7">Weekly (7 days)</option>
               <option value="14">Bi-weekly (14 days)</option>

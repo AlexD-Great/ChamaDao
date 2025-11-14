@@ -110,7 +110,7 @@ export default function ExplorePage() {
             placeholder="Search Chamas..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full rounded-lg border border-gray-300 py-3 pl-12 pr-4 focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500"
+            className="w-full rounded-lg border border-gray-300 py-3 pl-12 pr-4 text-gray-900 bg-white focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500"
           />
         </div>
       </div>

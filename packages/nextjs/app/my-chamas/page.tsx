@@ -23,10 +23,10 @@ function UserChamaCard({ chamaId, userAddress }: { chamaId: number; userAddress:
     );
   }
 
-  if (!chamaData || !isMember) return null;
+  if (!chamaData || !isMember || !memberData) return null;
 
   const [name, description, creator, contributionAmount, contributionFrequency, totalContributions, memberCount, isActive] = chamaData as any[];
-  const [hasJoined, contributions, , lastContribution] = memberData || [false, BigInt(0), BigInt(0), BigInt(0)];
+  const [hasJoined, contributions, , lastContribution] = memberData as any[];
 
   if (!isActive || !hasJoined) return null;
 

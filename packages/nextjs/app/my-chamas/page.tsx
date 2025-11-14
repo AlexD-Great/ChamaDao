@@ -13,7 +13,6 @@ export const dynamic = 'force-dynamic';
 // Component to display a single user's Chama
 function UserChamaCard({ chamaId, userAddress }: { chamaId: number; userAddress: `0x${string}` }) {
   const { data: chamaData, isLoading: loadingChama } = useChamaDetails(chamaId);
-  const { data: isMember } = useIsMember(chamaId, userAddress);
   const { data: memberData, isLoading: loadingMember } = useMemberDetails(chamaId, userAddress);
   const { contribute, isPending, isSuccess } = useContribute();
   const [showContribute, setShowContribute] = useState(false);

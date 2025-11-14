@@ -7,7 +7,7 @@ export function useTotalChamas() {
   return useReadContract({
     address: CHAMA_DAO_ADDRESS,
     abi: CHAMA_DAO_ABI,
-    functionName: "chamaCounter",
+    functionName: "chamaCount",
     query: {
       refetchInterval: 5000, // Refetch every 5 seconds
     },
@@ -45,7 +45,7 @@ export function useMemberDetails(chamaId: number, userAddress: `0x${string}` | u
   return useReadContract({
     address: CHAMA_DAO_ADDRESS,
     abi: CHAMA_DAO_ABI,
-    functionName: "members",
+    functionName: "chamaMembers",
     args: userAddress ? [BigInt(chamaId), userAddress] : undefined,
     query: {
       enabled: !!userAddress,

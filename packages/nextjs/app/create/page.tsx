@@ -156,12 +156,14 @@ export default function CreateChamaPage() {
           {/* Info Box */}
           <div className="rounded-lg bg-primary-50 border border-primary-200 p-4">
             <h3 className="font-semibold text-primary-900 mb-2">
-              What happens next?
+              💡 Important Information
             </h3>
-            <ul className="space-y-1 text-sm text-primary-800">
-              <li>• You'll be the first member of this Chama</li>
-              <li>• Others can join by contributing the set amount</li>
-              <li>• Members can request loans and vote democratically</li>
+            <ul className="space-y-2 text-sm text-primary-800">
+              <li>• <strong>Creating a Chama is FREE</strong> - no payment required</li>
+              <li>• You'll automatically become the first member</li>
+              <li>• To add funds, visit "My Chamas" and click "Contribute"</li>
+              <li>• The contribution amount is what members pay when contributing</li>
+              <li>• Others can join and contribute to grow the treasury</li>
               <li>• All transactions are transparent on-chain</li>
             </ul>
           </div>

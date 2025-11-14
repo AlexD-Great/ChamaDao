@@ -3,15 +3,17 @@
 import { useAccount } from "wagmi";
 import { HandCoins, Plus, TrendingUp, Users, Calendar, ArrowRight, Loader2 } from "lucide-react";
 import Link from "next/link";
-import { useTotalChamas, useChamaDetails, useIsMember, useMemberDetails } from "../../hooks/useChamaDAO";
+import { useTotalChamas, useChamaDetails, useIsMember, useMemberDetails, useContribute } from "../../hooks/useChamaDAO";
 import { formatEther } from "viem";
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 
 // Component to display a single user's Chama
 function UserChamaCard({ chamaId, userAddress }: { chamaId: number; userAddress: `0x${string}` }) {
   const { data: chamaData, isLoading: loadingChama } = useChamaDetails(chamaId);
   const { data: isMember } = useIsMember(chamaId, userAddress);
   const { data: memberData, isLoading: loadingMember } = useMemberDetails(chamaId, userAddress);
+  const { contribute, isPending, isSuccess } = useContribute();
+  const [showContribute, setShowContribute] = useState(false);
 
   if (loadingChama || loadingMember) {
     return (
@@ -23,12 +25,13 @@ function UserChamaCard({ chamaId, userAddress }: { chamaId: number; userAddress:
     );
   }
 
-  if (!chamaData || !isMember || !memberData) return null;
+  if (!chamaData || !memberData) return null;
 
   const [name, description, creator, contributionAmount, contributionFrequency, totalContributions, memberCount, isActive] = chamaData as any[];
-  const [hasJoined, contributions, , lastContribution] = memberData as any[];
+  const [memberAddress, contributions, lastContributionTime, joinedAt, isMemberActive] = memberData as any[];
 
-  if (!isActive || !hasJoined) return null;
+  // Only show if Chama is active and user is an active member
+  if (!isActive || !isMemberActive) return null;
 
   const frequencyMap: Record<number, string> = {
     7: "Weekly",
@@ -39,11 +42,13 @@ function UserChamaCard({ chamaId, userAddress }: { chamaId: number; userAddress:
 
   const isCreator = creator?.toLowerCase() === userAddress?.toLowerCase();
 
+  const handleContribute = () => {
+    const amount = formatEther(contributionAmount || BigInt(0));
+    contribute(chamaId, amount);
+  };
+
   return (
-    <Link
-      href={`/chama/${chamaId}`}
-      className="group rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition-all hover:border-primary-300 hover:shadow-lg"
-    >
+    <div className="group rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition-all hover:border-primary-300 hover:shadow-lg">
       <div className="mb-4 flex items-start justify-between">
         <div>
           <h3 className="text-xl font-bold text-gray-900 group-hover:text-primary-600 mb-1">
@@ -82,13 +87,39 @@ function UserChamaCard({ chamaId, userAddress }: { chamaId: number; userAddress:
         </div>
       </div>
 
-      <div className="pt-4 border-t border-gray-100 flex items-center justify-between">
-        <span className="text-sm text-gray-600">
-          {formatEther(contributionAmount || BigInt(0))} ETH per period
-        </span>
-        <ArrowRight className="h-5 w-5 text-primary-600 group-hover:translate-x-1 transition-transform" />
+      <div className="pt-4 border-t border-gray-100">
+        <div className="flex items-center justify-between mb-3">
+          <span className="text-sm text-gray-600">
+            {formatEther(contributionAmount || BigInt(0))} ETH per period
+          </span>
+        </div>
+        <div className="flex gap-2">
+          <button
+            onClick={handleContribute}
+            disabled={isPending || isSuccess}
+            className="flex-1 rounded-lg bg-primary-600 px-4 py-2 text-sm font-semibold text-white hover:bg-primary-700 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+          >
+            {isPending ? (
+              <>
+                <Loader2 className="h-4 w-4 animate-spin" />
+                Contributing...
+              </>
+            ) : isSuccess ? (
+              "✓ Contributed!"
+            ) : (
+              "Contribute"
+            )}
+          </button>
+          <Link
+            href={`/chama/${chamaId}`}
+            className="rounded-lg border-2 border-primary-600 px-4 py-2 text-sm font-semibold text-primary-600 hover:bg-primary-50 flex items-center gap-1"
+          >
+            View
+            <ArrowRight className="h-4 w-4" />
+          </Link>
+        </div>
       </div>
-    </Link>
+    </div>
   );
 }
 

@@ -1,21 +1,72 @@
-# 🏗 Scaffold-ETH 2
+# 🤝 ChamaDAO
 
-<h4 align="center">
-  <a href="https://docs.scaffoldeth.io">Documentation</a> |
-  <a href="https://scaffoldeth.io">Website</a>
-</h4>
+<div align="center">
 
-🧪 An open-source, up-to-date toolkit for building decentralized applications (dapps) on the Ethereum blockchain. It's designed to make it easier for developers to create and deploy smart contracts and build user interfaces that interact with those contracts.
+![ChamaDAO](https://img.shields.io/badge/ETH%20Safari-2025-brightgreen)
+![Built with](https://img.shields.io/badge/Built%20with-Next.js%2015-black)
+![Solidity](https://img.shields.io/badge/Solidity-0.8.20-blue)
 
-⚙️ Built using NextJS, RainbowKit, Foundry/Hardhat, Wagmi, Viem, and Typescript.
+<h3><strong>Decentralized Community Savings Groups on Ethereum</strong></h3>
 
-- ✅ **Contract Hot Reload**: Your frontend auto-adapts to your smart contract as you edit it.
-- 🪝 **[Custom hooks](https://docs.scaffoldeth.io/hooks/)**: Collection of React hooks wrapper around [wagmi](https://wagmi.sh/) to simplify interactions with smart contracts with typescript autocompletion.
-- 🧱 [**Components**](https://docs.scaffoldeth.io/components/): Collection of common web3 components to quickly build your frontend.
-- 🔥 **Burner Wallet & Local Faucet**: Quickly test your application with a burner wallet and local faucet.
-- 🔐 **Integration with Wallet Providers**: Connect to different wallet providers and interact with the Ethereum network.
+<p><strong>🏆 ETH Safari 2025 Hackathon Submission</strong></p>
 
-![Debug Contracts tab](https://github.com/scaffold-eth/scaffold-eth-2/assets/55535804/b237af0c-5027-4849-a5c1-2e31495cccb1)
+[Live Demo](#) • [Video Demo](#) • [Documentation](#-documentation)
+
+</div>
+
+---
+
+## 🌍 Overview
+
+**ChamaDAO** brings traditional African community savings groups (Chamas) to the blockchain, providing transparency, security, and democratic governance through Ethereum smart contracts.
+
+### 💡 The Problem
+
+Traditional Chamas in Africa face critical challenges:
+- **$1B+** locked in informal savings groups with no transparency
+- High risk of fraud and mismanagement
+- No verifiable records of contributions
+- Limited access to traditional banking (60% unbanked)
+
+### ✨ Our Solution
+
+A decentralized platform where communities can:
+- ✅ Create transparent savings groups
+- ✅ Make verifiable contributions
+- ✅ Request and vote on loans democratically
+- ✅ Track all transactions on-chain
+- ✅ Eliminate fraud through smart contracts
+
+---
+
+## ✨ Features
+
+### Core Functionality
+- **Create Chamas**: Set contribution amounts and frequencies
+- **Join Groups**: Become a member with wallet connection
+- **Contribute**: Make regular ETH contributions
+- **Request Loans**: Submit loan requests with purpose and terms
+- **Democratic Voting**: Members vote on loan approvals
+- **Automated Execution**: Smart contracts handle loan disbursement
+- **Repayment Tracking**: Monitor loan repayments on-chain
+
+### Technical Features
+- 🔐 **Secure Smart Contracts**: Audited Solidity code
+- 🎨 **Beautiful UI**: African-inspired design
+- 📱 **Mobile Responsive**: Works on all devices
+- ⚡ **Fast**: Optimized for Ethereum L2s
+- 🌐 **Web3 Native**: RainbowKit wallet integration
+
+---
+
+## 🛠 Tech Stack
+
+- **Smart Contracts**: Solidity 0.8.20
+- **Frontend**: Next.js 15, React, TypeScript
+- **Web3**: Wagmi, Viem, RainbowKit
+- **Styling**: TailwindCSS, DaisyUI
+- **Development**: Hardhat, Scaffold-ETH 2
+- **Deployment**: Vercel (Frontend), Ethereum Sepolia (Contracts)
 
 ## Requirements
 
@@ -25,42 +76,142 @@ Before you begin, you need to install the following tools:
 - Yarn ([v1](https://classic.yarnpkg.com/en/docs/install/) or [v2+](https://yarnpkg.com/getting-started/install))
 - [Git](https://git-scm.com/downloads)
 
-## Quickstart
+## 🚀 Quickstart
 
-To get started with Scaffold-ETH 2, follow the steps below:
+### 1. Clone the Repository
 
-1. Install the latest version of Scaffold-ETH 2
-
+```bash
+git clone https://github.com/YOUR_USERNAME/chamadao.git
+cd chamadao
 ```
-npx create-eth@latest
+
+### 2. Install Dependencies
+
+```bash
+yarn install
 ```
 
-This command will install all the necessary packages and dependencies, so it might take a while.
+### 3. Run Local Development
 
-> [!NOTE]
-> You can also initialize your project with one of our extensions to add specific features or starter-kits. Learn more in our [extensions documentation](https://docs.scaffoldeth.io/extensions/).
+**Terminal 1** - Start local blockchain:
 
-2. Run a local network in the first terminal:
-
-```
+```bash
 yarn chain
 ```
 
-This command starts a local Ethereum network that runs on your local machine and can be used for testing and development. Learn how to [customize your network configuration](https://docs.scaffoldeth.io/quick-start/environment#1-initialize-a-local-blockchain).
+**Terminal 2** - Deploy contracts:
 
-3. On a second terminal, deploy the test contract:
-
-```
+```bash
 yarn deploy
 ```
 
-This command deploys a test smart contract to the local network. You can find more information about how to customize your contract and deployment script in our [documentation](https://docs.scaffoldeth.io/quick-start/environment#2-deploy-your-smart-contract).
+**Terminal 3** - Start frontend:
 
-4. On a third terminal, start your NextJS app:
-
-```
+```bash
 yarn start
 ```
+
+Visit **http://localhost:3000** to see the app!
+
+### 4. Connect Wallet
+
+1. Add Hardhat network to MetaMask:
+   - Network Name: `Hardhat Local`
+   - RPC URL: `http://127.0.0.1:8545`
+   - Chain ID: `31337`
+   - Currency: `ETH`
+
+2. Import a test account (has 10,000 ETH):
+   - Private Key: `0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80`
+
+---
+
+## 📖 Documentation
+
+### Smart Contract
+
+The main contract is `ChamaDAO.sol` located in `packages/hardhat/contracts/`
+
+**Key Functions:**
+- `createChama()` - Create a new savings group
+- `joinChama()` - Join an existing Chama
+- `contribute()` - Make a contribution
+- `requestLoan()` - Request a loan from the treasury
+- `voteOnLoan()` - Vote on loan requests
+- `executeLoan()` - Execute approved loans
+- `repayLoan()` - Repay borrowed funds
+
+### Frontend Pages
+
+- `/` - Homepage with features and CTAs
+- `/explore` - Browse all Chamas
+- `/my-chamas` - Your Chamas dashboard
+- `/create` - Create a new Chama
+- `/chama/[id]` - Individual Chama details
+
+---
+
+## 🌐 Deployment
+
+### Deploy to Sepolia Testnet
+
+1. Get Sepolia ETH from [faucet](https://sepoliafaucet.com/)
+
+2. Deploy contract:
+```bash
+yarn deploy --network sepolia
+```
+
+3. Update `scaffold.config.ts`:
+```typescript
+targetNetworks: [chains.sepolia]
+```
+
+### Deploy Frontend to Vercel
+
+1. Push to GitHub
+2. Import project on [Vercel](https://vercel.com)
+3. Set root directory: `packages/nextjs`
+4. Deploy!
+
+---
+
+## 🎯 Roadmap
+
+- [ ] Multi-token support (USDC, DAI)
+- [ ] Automated contribution reminders
+- [ ] Credit scoring system
+- [ ] Mobile app (React Native)
+- [ ] Integration with M-Pesa
+- [ ] Governance token for platform decisions
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License.
+
+---
+
+## 🏆 Hackathon
+
+Built for **ETH Safari 2025** - Empowering African communities through blockchain technology.
+
+---
+
+## 📞 Contact
+
+For questions or support, please open an issue on GitHub.
+
+---
+
+**Made with ❤️ for Africa**
 
 Visit your app on: `http://localhost:3000`. You can interact with your smart contract using the `Debug Contracts` page. You can tweak the app config in `packages/nextjs/scaffold.config.ts`.
 
